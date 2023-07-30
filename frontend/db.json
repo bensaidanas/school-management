@@ -1,0 +1,201 @@
+{
+    "students": [
+      {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "phoneNumber": "123-456-7890",
+        "major": "Science",
+        "year": 11,
+        "classrooms": [
+          {
+            "studentId": 1,
+            "classId": 101,
+            "month": "January 2023",
+            "amount": 100,
+            "isPaid": true
+          },
+          {
+            "studentId": 1,
+            "classId": 102,
+            "month": "January 2023",
+            "amount": 120,
+            "isPaid": false
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "email": "jane.smith@example.com",
+        "phoneNumber": "987-654-3210",
+        "major": "Mathematics",
+        "year": 10,
+        "classrooms": [
+          {
+            "studentId": 2,
+            "classId": 101,
+            "month": "January 2023",
+            "amount": 100,
+            "isPaid": true
+          },
+          {
+            "studentId": 2,
+            "classId": 103,
+            "month": "January 2023",
+            "amount": 110,
+            "isPaid": true
+          }
+        ]
+      }
+    ],
+    "teachers": [
+      {
+        "id": 1,
+        "firstName": "Mary",
+        "lastName": "Johnson",
+        "email": "mary.johnson@example.com",
+        "phoneNumber": "555-123-4567",
+        "address": "123 Main St, City",
+        "subjects": [
+          {
+            "id": 101,
+            "name": "Mathematics"
+          }
+        ],
+        "SalleryBySession": 50
+      }
+    ],
+    "classrooms": [
+      {
+        "id": 101,
+        "name": "Math Class A",
+        "teacherId": 1,
+        "year": 2023,
+        "sessionNumber": 1,
+        "maxCapacity": 30,
+        "students": [
+          {
+            "studentId": 1,
+            "classId": 101,
+            "month": "January 2023",
+            "amount": 100,
+            "isPaid": true
+          },
+          {
+            "studentId": 2,
+            "classId": 101,
+            "month": "January 2023",
+            "amount": 100,
+            "isPaid": true
+          }
+        ]
+      },
+      {
+        "id": 102,
+        "name": "Science Class B",
+        "teacherId": 1,
+        "year": 2023,
+        "sessionNumber": 1,
+        "maxCapacity": 25,
+        "students": [
+          {
+            "studentId": 1,
+            "classId": 102,
+            "month": "January 2023",
+            "amount": 120,
+            "isPaid": false
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "name": "Math Class C",
+        "teacherId": 1,
+        "year": 2023,
+        "sessionNumber": 1,
+        "maxCapacity": 20,
+        "students": [
+          {
+            "studentId": 2,
+            "classId": 103,
+            "month": "January 2023",
+            "amount": 110,
+            "isPaid": true
+          }
+        ]
+      }
+    ],
+    "subjects": [
+      {
+        "id": 101,
+        "name": "Mathematics"
+      },
+      {
+        "id": 102,
+        "name": "Science"
+      }
+    ],
+    "paymentRecords": [
+      {
+        "id": 1,
+        "studentId": 1,
+        "classId": 101,
+        "month": "January 2023",
+        "amount": 100,
+        "isPaid": true
+      },
+      {
+        "id": 2,
+        "studentId": 1,
+        "classId": 102,
+        "month": "January 2023",
+        "amount": 120,
+        "isPaid": false
+      },
+      {
+        "id": 3,
+        "studentId": 2,
+        "classId": 101,
+        "month": "January 2023",
+        "amount": 100,
+        "isPaid": true
+      },
+      {
+        "id": 4,
+        "studentId": 2,
+        "classId": 103,
+        "month": "January 2023",
+        "amount": 110,
+        "isPaid": true
+      }
+    ],
+    "payments": [
+      {
+        "id": 1,
+        "teacherId": 1,
+        "classId": 101,
+        "month": "January 2023",
+        "amount": 250,
+        "isPaid": true
+      },
+      {
+        "id": 2,
+        "teacherId": 1,
+        "classId": 102,
+        "month": "January 2023",
+        "amount": 120,
+        "isPaid": false
+      },
+      {
+        "id": 3,
+        "teacherId": 1,
+        "classId": 103,
+        "month": "January 2023",
+        "amount": 220,
+        "isPaid": true
+      }
+    ]
+  }
