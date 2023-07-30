@@ -3,13 +3,14 @@ import { Student } from '../models/student';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { PaymentRecord } from '../models/payment-record';
+import { Classroom } from '../models/classroom';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
   private apiUrl = 'http://localhost:3000/students'; 
-  
+
   constructor(private http: HttpClient) { }
 
   // Get all students from the last student added
@@ -19,6 +20,18 @@ export class StudentService {
         catchError((error: any) => {
           console.error('An error occurred:', error);
           return throwError('Something went wrong. Please try again later.');
+        })
+      );
+  }
+
+  // Get a single student by ID
+  getStudentById(studentId: number): Observable<Student> {
+    const url = `${this.apiUrl}/${studentId}`;
+    return this.http.get<Student>(url)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch student details. Please try again later.');
         })
       );
   }
@@ -48,7 +61,7 @@ export class StudentService {
 
    // Get all payment records of a student by student ID
     getPaymentRecordsByStudentId(studentId: number): Observable<PaymentRecord[]> {
-      const url = `${this.apiUrl}/paymentRecords?studentId=${studentId}`;
+      const url = `http://localhost:3000/paymentRecords?studentId=${studentId}`;
       return this.http.get<PaymentRecord[]>(url)
         .pipe(
           catchError((error: any) => {
@@ -60,7 +73,7 @@ export class StudentService {
 
     // Toggle the isPaid property of a payment record
     togglePaymentStatus(paymentRecord: PaymentRecord): Observable<PaymentRecord> {
-      const url = `${this.apiUrl}/paymentRecords/${paymentRecord.id}`;
+      const url = `http://localhost:3000/paymentRecords/${paymentRecord.id}`;
       return this.http.patch<PaymentRecord>(url, { isPaid: !paymentRecord.isPaid })
         .pipe(
           catchError((error: any) => {
@@ -69,4 +82,16 @@ export class StudentService {
           })
         );
     }
+
+     // Get a single class by ID
+  getClassById(classId: number): Observable<Classroom> {
+    const url = `http://localhost:3000/classrooms/${classId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
+    return this.http.get<Classroom>(url)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch class details. Please try again later.');
+        })
+      );
+  }
 }

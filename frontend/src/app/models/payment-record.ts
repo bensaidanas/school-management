@@ -7,4 +7,5 @@ export interface PaymentRecord {
     month: string; // Month for which the payment is recorded (e.g., "January 2023")
     amount: number; // Payment amount for the class for the specified month
     isPaid: boolean; // Indicates if the payment has been made by the student for the month
+    className: string;
 }

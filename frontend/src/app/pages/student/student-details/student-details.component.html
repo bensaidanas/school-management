@@ -1,1 +1,31 @@
-<p>student-details works!</p>
+<div *ngIf="student">
+    <div class="p-4 bg-white rounded-lg shadow-md">
+        <div class="h-[40vh] ">
+            <h2 class="text-5xl text-center font-semibold ">{{ student.firstName }} {{ student.lastName }}</h2>
+            <p class="text-lg "><span class="font-bold">Major:</span> {{ student.major }}</p>
+            <p class="text-lg "><span class="font-bold">Grad:</span> {{ student.year }}th</p>
+            <p class="text-lg "><span class="font-bold">Email:</span> {{ student.email }}</p>
+            <p class="text-lg "><span class="font-bold">Phone:</span> {{ student.phoneNumber }}</p>
+        </div>
+        
+        <h3 class="mt-8 mb-2 text-xl font-bold">Payment Records</h3>
+        <p-table [value]="paymentRecords">
+            <ng-template pTemplate="header">
+                <tr>
+                <th>Class Name</th>
+                <th>Month</th>
+                <th>Amount</th>
+                <th>Status</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-paymentRecord>
+                <tr>
+                    <td>{{ paymentRecord.className }}</td>
+                    <td>{{ paymentRecord.month }}</td>
+                    <td>{{ paymentRecord.amount }}</td>
+                    <td>{{ paymentRecord.isPaid ? 'Paid' : 'Not Paid' }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
