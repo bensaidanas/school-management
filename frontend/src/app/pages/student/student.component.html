@@ -1,1 +1,17 @@
-<p>student works!</p>
+<div *ngIf="students" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div *ngFor="let student of students" class="bg-gray-200 hover:scale-105 cursor-pointer duration-300 transition-all rounded-lg shadow-md relative p-4 flex justify-end items-center">
+        <a [routerLink]="['/student-details', student.id]">
+            <div class="mr-4">
+                <i class="pi pi-user opacity-50 text-7xl absolute bottom-0 left-4"></i>
+            </div>
+            <div class="w-[65%]">
+                <h3 class="text-lg font-semibold">{{ student.firstName }} {{ student.lastName }}</h3>
+                <p class="text-sm text-gray-600">{{ student.major }}</p>
+                <p class="text-sm text-gray-600">{{ student.year }}th Year</p>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="absolute hover:scale-105 hover:bg-lime-500 cursor-pointer duration-300 transition-all  bottom-10 right-10 w-14 h-14 flex items-center justify-center rounded-full bg-lime-600">
+    <i class="pi pi-user-plus text-xl text-white"></i>
+</div>
