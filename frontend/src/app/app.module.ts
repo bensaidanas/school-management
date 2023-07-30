@@ -8,6 +8,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { StudentComponent } from './pages/student/student.component';
 import { TeacherComponent } from './pages/teacher/teacher.component';
 import { ClassroomComponent } from './pages/classroom/classroom.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ClassroomComponent } from './pages/classroom/classroom.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
