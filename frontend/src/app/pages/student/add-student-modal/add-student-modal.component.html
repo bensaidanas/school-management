@@ -1,5 +1,5 @@
 
-  <div class="p-dialog-content">
+  <div class="">
     <form (ngSubmit)="onSubmit()" #studentForm="ngForm">
       <div class="p-field flex flex-col gap-1">
         <label for="firstName">First Name</label>
@@ -9,18 +9,18 @@
         <label for="lastName">Last Name</label>
         <input id="lastName" type="text" pInputText [(ngModel)]="lastName" name="lastName" required />
       </div>
-      <!-- <div class="p-field flex flex-col gap-1">
+      <div class="p-field flex flex-col gap-1">
         <label for="major">Major</label>
         <input id="major" type="text" pInputText [(ngModel)]="major" name="major" required />
-      </div> -->
+      </div>
       <div class="p-field flex flex-col gap-1">
         <label for="major">Phone</label>
         <input id="major" type="text" pInputText [(ngModel)]="phoneNumber" name="major" required />
       </div>
-      <!-- <div class="p-field flex flex-col gap-1">
+      <div class="p-field flex flex-col gap-1">
         <label for="year">Year</label>
         <input id="year" type="number" pInputText [(ngModel)]="year" name="year" required />
-      </div> -->
+      </div>
       <!-- Add other fields as needed for the student data -->
       <div class="flex justify-between items-center w-full gap-2 mt-4">
         <button type="submit" class="w-full py-3 rounded-lg bg-lime-500 font-bold hover:bg-lime-700 text-white"   icon="pi pi-check" >Add</button>

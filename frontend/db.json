@@ -67,13 +67,12 @@
       "email": "mary.johnson@example.com",
       "phoneNumber": "555-123-4567",
       "address": "123 Main St, City",
-      "subjects": [
+      "subject":
         {
           "id": 101,
           "name": "Mathematics"
-        }
-      ],
-      "SalleryBySession": 50
+        },
+      "salleryBySession": 50
     }
   ],
   "classrooms": [

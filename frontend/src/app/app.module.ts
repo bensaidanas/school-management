@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudentDetailsComponent } from './pages/student/student-details/student-details.component';
 import { MaterialModule } from 'src/material.module';
 import { AddStudentModalComponent } from './pages/student/add-student-modal/add-student-modal.component';
+import { TeacherDetailsComponent } from './pages/teacher/teacher-details/teacher-details.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AddStudentModalComponent } from './pages/student/add-student-modal/add-
     TeacherComponent,
     ClassroomComponent,
     StudentDetailsComponent,
-    AddStudentModalComponent
+    AddStudentModalComponent,
+    TeacherDetailsComponent
   ],
   imports: [
     BrowserModule,

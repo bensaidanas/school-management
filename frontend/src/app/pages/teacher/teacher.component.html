@@ -1,1 +1,14 @@
-<p>teacher works!</p>
+<div *ngIf="teachers" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div *ngFor="let teacher of teachers" class="bg-gray-200  hover:scale-105 cursor-pointer duration-300 transition-all rounded-lg shadow-md relative p-4 flex justify-end items-center">
+        <a class="w-full  flex h-16 justify-end items-center" [routerLink]="['/teacher-details', teacher.id]">
+            <div class="mr-4">
+                <i class="pi pi-user opacity-50 text-8xl absolute -bottom-1 left-0"></i>
+            </div>
+            <div class="w-[65%]">
+                <h3 class="text-lg font-semibold">{{ teacher.firstName }} {{ teacher.lastName }}</h3>
+                <p class="text-sm text-gray-600">{{ teacher.subject.name }}</p>
+                <!-- <p class="text-sm text-gray-600">{{ student.year }}th Year</p> -->
+            </div>
+        </a>
+    </div>
+</div>

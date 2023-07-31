@@ -7,6 +7,6 @@ export interface Teacher {
     email: string;
     phoneNumber: string;
     address: string;
-    subjects: Subject;
-    SalleryBySession: number;
+    subject: Subject;
+    salleryBySession: number;
 }
