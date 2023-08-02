@@ -4,6 +4,7 @@ import { Teacher } from '../models/teacher';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Payment } from '../models/payment';
 import { Classroom } from '../models/classroom';
+import { Subject } from '../models/subject';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,30 @@ export class TeacherService {
         catchError((error: any) => {
           console.error('An error occurred:', error);
           return throwError('Failed to fetch class details. Please try again later.');
+        })
+      );
+  }
+
+  // Get all subjects
+  getAllSubjects(): Observable<Subject[]> {
+    const url = `${this.apiUrl}/subjects`;
+    return this.http.get<Subject[]>(url)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch subjects. Please try again later.');
+        })
+      );
+  }
+
+  // Get a subject by ID
+  getSubjectById(subjectId: number): Observable<Subject> {
+    const url = `${this.apiUrl}/subjects/${subjectId}`;
+    return this.http.get<Subject>(url)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch subject. Please try again later.');
         })
       );
   }

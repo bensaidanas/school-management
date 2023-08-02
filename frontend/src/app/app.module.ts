@@ -16,6 +16,7 @@ import { StudentDetailsComponent } from './pages/student/student-details/student
 import { MaterialModule } from 'src/material.module';
 import { AddStudentModalComponent } from './pages/student/add-student-modal/add-student-modal.component';
 import { TeacherDetailsComponent } from './pages/teacher/teacher-details/teacher-details.component';
+import { AddTeacherComponent } from './pages/teacher/add-teacher/add-teacher.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { TeacherDetailsComponent } from './pages/teacher/teacher-details/teacher
     ClassroomComponent,
     StudentDetailsComponent,
     AddStudentModalComponent,
-    TeacherDetailsComponent
+    TeacherDetailsComponent,
+    AddTeacherComponent
   ],
   imports: [
     BrowserModule,
