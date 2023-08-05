@@ -37,7 +37,7 @@ export class StudentService {
   }
 
   // Add a new student
-  addStudent(student: Student): Observable<Student> {
+  addStudent(student: Partial<Student>): Observable<Student> {
     return this.http.post<Student>(this.apiUrl, student)
       .pipe(
         catchError((error: any) => {

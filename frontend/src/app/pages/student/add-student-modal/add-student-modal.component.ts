@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Student } from 'src/app/models/student';
 
@@ -8,29 +10,49 @@ import { Student } from 'src/app/models/student';
   styleUrls: ['./add-student-modal.component.css']
 })
 export class AddStudentModalComponent {
-  newStudent!: Student;
-  firstName!: string;
-  lastName!: string;
-  email!: string;
-  phoneNumber!: string;
-  major!: string;
-  year!: number;
+  studentForm: FormGroup;
+  grades = [
+    {id: 1, name: 'Tronc Commun'},
+    {id: 2, name: 'Première année Bac'},
+    {id: 3, name: 'Deuxième année Bac'},
+  ];
 
-  constructor(public ref: DynamicDialogRef) {}
+  majors = [
+    {id: 1, name: 'Sciences de la Vie et de la Terre'},
+    {id: 2, name: 'Sciences Mathématiques'},
+    {id: 3, name: 'Sciences Physiques et Chimiques'},
+  ];
 
-  onSubmit() {
-    this.newStudent = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      phoneNumber: this.phoneNumber,
-      major: this.major,
-      year: this.year
-    }
-    this.ref.close(this.newStudent); // Close the modal and pass back the new student data
+  constructor(
+    public dialogRef: MatDialogRef<AddStudentModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Partial<Student>, private fb: FormBuilder
+  ) {
+    this.studentForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required]],
+      gradeId: [null, Validators.required],
+      majorId: [null]
+    });
   }
 
-  onCancel() {
-    this.ref.close(); // Close the modal without passing any data
+  onSaveClick(): void {
+    console.log(this.studentForm)
+    if (this.studentForm.valid) {
+      const formValues = this.studentForm.value;
+      this.data.firstName = formValues.firstName;
+      this.data.lastName = formValues.lastName;
+      this.data.email = formValues.email;
+      this.data.phoneNumber = formValues.phoneNumber;
+      this.data.gradeId = formValues.gradeId;
+      this.data.majorId = formValues.majorId;
+
+      this.dialogRef.close(this.data);
+    }
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

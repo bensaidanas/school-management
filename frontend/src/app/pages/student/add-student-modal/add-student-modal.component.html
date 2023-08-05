@@ -1,31 +1,54 @@
 
-  <div class="">
-    <form (ngSubmit)="onSubmit()" #studentForm="ngForm">
-      <div class="p-field flex flex-col gap-1">
-        <label for="firstName">First Name</label>
-        <input id="firstName" type="text" pInputText [(ngModel)]="firstName" name="firstName" required />
+<div class="flex flex-col  justify-between h-full">
+  <div>
+      <h1 mat-dialog-title>New Student</h1>
+      <div mat-dialog-content>
+          <!-- <p></p> -->
+              <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
+                <div class="grid grid-cols-2 w-full gap-2">
+                  <mat-form-field class="w-full">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" required>
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                      <mat-label>Last Name</mat-label>
+                      <input matInput formControlName="lastName" required>
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                      <mat-label>Enter your email</mat-label>
+                      <input matInput placeholder="nadir@example.com" formControlName="email"  required>
+                      <mat-error></mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="w-full">
+                      <mat-label>Phone Number</mat-label>
+                      <input matInput formControlName="phoneNumber">
+                  </mat-form-field>
+                  <mat-form-field>
+                      <mat-label>Your Grade</mat-label>
+                      <mat-select [(ngModel)]="data.gradeId" formControlName="gradeId" required>
+                          <mat-option *ngFor="let grade of grades" [value]="grade.id">
+                              {{grade.name}}
+                          </mat-option>
+                      </mat-select>
+                      <!-- <mat-error *ngIf="gradeControl.hasError('required')">Please choose a grade</mat-error> -->
+                      <mat-hint></mat-hint>
+                  </mat-form-field>
+                  <mat-form-field *ngIf="data.gradeId === 2 || data.gradeId === 3">
+                      <mat-label>Your Major</mat-label>
+                      <mat-select [(ngModel)]="data.majorId" formControlName="majorId">
+                          <mat-option *ngFor="let major of majors" [value]="major.id">
+                              {{major.name}}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                  
+                <div class="flex justify-between items-center w-full gap-2">
+                  <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Cancel</button>
+                  <button  type="submit" cdkFocusInitial  class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-lime-500 font-bold hover:bg-lime-400 text-white">Submit</button>
+                </div>
+              </form>
       </div>
-      <div class="p-field flex flex-col gap-1">
-        <label for="lastName">Last Name</label>
-        <input id="lastName" type="text" pInputText [(ngModel)]="lastName" name="lastName" required />
-      </div>
-      <div class="p-field flex flex-col gap-1">
-        <label for="major">Major</label>
-        <input id="major" type="text" pInputText [(ngModel)]="major" name="major" required />
-      </div>
-      <div class="p-field flex flex-col gap-1">
-        <label for="major">Phone</label>
-        <input id="major" type="text" pInputText [(ngModel)]="phoneNumber" name="major" required />
-      </div>
-      <div class="p-field flex flex-col gap-1">
-        <label for="year">Year</label>
-        <input id="year" type="number" pInputText [(ngModel)]="year" name="year" required />
-      </div>
-      <!-- Add other fields as needed for the student data -->
-      <div class="flex justify-between items-center w-full gap-2 mt-4">
-        <button type="submit" class="w-full py-3 rounded-lg bg-lime-500 font-bold hover:bg-lime-700 text-white"   icon="pi pi-check" >Add</button>
-        <button type="button" class="w-full py-3 rounded-lg hover:bg-gray-300 font-bold"  (click)="onCancel()">Cancel</button>
-      </div>
-    </form>
   </div>
   
+</div>

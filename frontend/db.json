@@ -57,6 +57,36 @@
       "major": "SVT",
       "year": 8,
       "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "gradeId": 2,
+      "majorId": 2,
+      "firstName": "Anas",
+      "lastName": "Anas",
+      "email": "Anas@gmail.com",
+      "phoneNumber": "06874521",
+      "id": 5
+    },
+    {
+      "gradeId": 1,
+      "firstName": "sdfsdf",
+      "lastName": "sdfsdf",
+      "email": "s@gmail.com",
+      "phoneNumber": "516551561",
+      "majorId": null,
+      "id": 6
+    },
+    {
+      "gradeId": 2,
+      "majorId": 1,
+      "firstName": "Alex",
+      "lastName": "Alex",
+      "email": "alex@gmail.com",
+      "phoneNumber": "06895456",
+      "id": 7
     }
   ],
   "teachers": [
@@ -67,11 +97,10 @@
       "email": "mary.johnson@example.com",
       "phoneNumber": "555-123-4567",
       "address": "123 Main St, City",
-      "subject":
-        {
-          "id": 101,
-          "name": "Mathematics"
-        },
+      "subject": {
+        "id": 101,
+        "name": "Mathematics"
+      },
       "salleryBySession": 50
     }
   ],

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DialogService } from 'primeng/dynamicdialog';
 import { Payment } from 'src/app/models/payment';
 import { Teacher } from 'src/app/models/teacher';
 import { TeacherService } from 'src/app/services/teacher.service';
+import { AddTeacherComponent } from '../add-teacher/add-teacher.component';
 
 @Component({
   selector: 'app-teacher-details',
@@ -15,7 +17,7 @@ export class TeacherDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private teacherService: TeacherService
+    private teacherService: TeacherService,
   ) {}
 
   ngOnInit() {
@@ -61,5 +63,7 @@ export class TeacherDetailsComponent implements OnInit {
       );
     }
   }
-  
+
+ 
+
 }

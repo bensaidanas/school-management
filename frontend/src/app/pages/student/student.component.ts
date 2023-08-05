@@ -3,6 +3,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 import { AddStudentModalComponent } from './add-student-modal/add-student-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-student',
@@ -12,7 +13,7 @@ import { AddStudentModalComponent } from './add-student-modal/add-student-modal.
 export class StudentComponent implements OnInit {
   students!: Student[];
 
-  constructor(private studentService: StudentService, private dialogService: DialogService) { }
+  constructor(private studentService: StudentService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAllStudents();
@@ -30,20 +31,22 @@ export class StudentComponent implements OnInit {
     );
   }
 
-  openAddStudentModal() {
-    const ref = this.dialogService.open(AddStudentModalComponent, {
-      header: 'Add New Student',
-      width: '50%',
-      contentStyle: { 'max-height': '500px', overflow: 'auto' }
+  openAddStudentModal(enterAnimationDuration: string, exitAnimationDuration: string) : void {
+    const dialogRef = this.dialog.open(AddStudentModalComponent, {
+      // height: '500px',
+      width: '700px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {},
     });
 
-    ref.onClose.subscribe((newStudentData: any) => {
-      if (newStudentData) {
-        this.studentService.addStudent(newStudentData).subscribe((res) => {
-          console.log(res)
+    dialogRef.afterClosed().subscribe((result: Partial<Student>) => {
+      console.log(result);
+      if (result) {
+        this.studentService.addStudent(result).subscribe(res => {
+          console.log("Student Added")
           this.getAllStudents();
         })
-        console.log('New Student Data:', newStudentData);
       }
     });
   }

@@ -1,25 +1,22 @@
 import { NgModule } from "@angular/core";
-import { ButtonModule } from 'primeng/button';
-import { PasswordModule } from 'primeng/password';
-import { TableModule } from 'primeng/table';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputMaskModule } from 'primeng/inputmask';
-import { DropdownModule } from 'primeng/dropdown';
-import { DialogModule } from 'primeng/dialog';
-import { CardModule } from 'primeng/card';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     exports: [
-        ButtonModule,
-        PasswordModule,
-        TableModule,
-        InputTextModule,
-        InputMaskModule,
-        DropdownModule,
-        DialogModule,
-        CardModule,
-        InputTextareaModule
+        MatSlideToggleModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatDialogModule,
+        FormsModule,
+        MatSelectModule,
+        ReactiveFormsModule
     ]
 })
 
