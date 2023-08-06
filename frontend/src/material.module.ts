@@ -6,6 +6,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+
+// import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
     exports: [
@@ -16,7 +20,9 @@ import {MatSelectModule} from '@angular/material/select';
         MatDialogModule,
         FormsModule,
         MatSelectModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatIconModule,
+        MatTableModule
     ]
 })
 

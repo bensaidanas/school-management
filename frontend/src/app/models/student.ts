@@ -10,5 +10,7 @@ export interface Student {
     phoneNumber: string;
     majorId: number;
     gradeId: number;
+    gradeName: string;
+    majorName: string;
     classrooms?: PaymentRecord[]; // An array of PaymentRecord objects representing the classrooms the student belongs to
 }

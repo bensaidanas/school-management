@@ -4,234 +4,162 @@
       "id": 1,
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
+      "email": "john@example.com",
       "phoneNumber": "123-456-7890",
-      "major": "Science",
-      "year": 11,
+      "majorId": 1,
+      "gradeId": 1,
+      "gradeName": "Tronc Commun",
       "classrooms": [
         {
-          "studentId": 1,
-          "classId": 101,
-          "month": "January 2023",
-          "amount": 100,
-          "isPaid": true
-        },
-        {
-          "studentId": 1,
-          "classId": 102,
-          "month": "January 2023",
-          "amount": 120,
-          "isPaid": false
+          "id": 1,
+          "name": "Physics 101",
+          "teacher": {
+            "id": 1,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice@example.com",
+            "phoneNumber": "987-654-3210",
+            "address": "123 Main St",
+            "subject": {
+              "id": 1,
+              "name": "Physics"
+            },
+            "salleryBySession": 150
+          },
+          "year": 2023,
+          "sessionNumber": 1,
+          "maxCapacity": 30,
+          "students": [
+            {
+              "id": 1,
+              "studentId": 1,
+              "classId": 1,
+              "month": "August 2023",
+              "amount": 150,
+              "isPaid": true,
+              "className": "Physics 101"
+            }
+          ]
         }
       ]
-    },
-    {
-      "id": 2,
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "email": "jane.smith@example.com",
-      "phoneNumber": "987-654-3210",
-      "major": "Mathematics",
-      "year": 10,
-      "classrooms": [
-        {
-          "studentId": 2,
-          "classId": 101,
-          "month": "January 2023",
-          "amount": 100,
-          "isPaid": true
-        },
-        {
-          "studentId": 2,
-          "classId": 103,
-          "month": "January 2023",
-          "amount": 110,
-          "isPaid": true
-        }
-      ]
-    },
-    {
-      "firstName": "Anas",
-      "lastName": "Bensaid",
-      "phoneNumber": "0689246374",
-      "major": "SVT",
-      "year": 8,
-      "id": 3
-    },
-    {
-      "id": 4
     },
     {
       "gradeId": 2,
       "majorId": 2,
       "firstName": "Anas",
-      "lastName": "Anas",
-      "email": "Anas@gmail.com",
-      "phoneNumber": "06874521",
-      "id": 5
+      "lastName": "Bensaid",
+      "email": "anas@gmail.com",
+      "phoneNumber": "0689246374",
+      "id": 2
     },
     {
-      "gradeId": 1,
-      "firstName": "sdfsdf",
-      "lastName": "sdfsdf",
-      "email": "s@gmail.com",
-      "phoneNumber": "516551561",
-      "majorId": null,
-      "id": 6
+      "gradeId": 3,
+      "majorId": 4,
+      "firstName": "Nadir",
+      "lastName": "Nadir",
+      "email": "nadir@gmail.com",
+      "phoneNumber": "0698582164",
+      "id": 3
     },
     {
       "gradeId": 2,
-      "majorId": 1,
-      "firstName": "Alex",
-      "lastName": "Alex",
-      "email": "alex@gmail.com",
-      "phoneNumber": "06895456",
-      "id": 7
+      "majorId": 3,
+      "firstName": "Omar",
+      "lastName": "Bennaoui",
+      "email": "omar@gmail.com",
+      "phoneNumber": "0685469825",
+      "id": 4
+    }
+  ],
+  "majors": [
+    {
+      "id": 1,
+      "name": "none"
+    },
+    {
+      "id": 2,
+      "name": "SVT"
+    },
+    {
+      "id": 3,
+      "name": "Sciences Math"
+    },
+    {
+      "id": 4,
+      "name": "Sciences PC"
+    }
+  ],
+  "grades": [
+    {
+      "id": 1,
+      "name": "Tronc Commun"
+    },
+    {
+      "id": 2,
+      "name": "Première année Bac"
+    },
+    {
+      "id": 3,
+      "name": "Deuxième année Bac"
     }
   ],
   "teachers": [
     {
       "id": 1,
-      "firstName": "Mary",
-      "lastName": "Johnson",
-      "email": "mary.johnson@example.com",
-      "phoneNumber": "555-123-4567",
-      "address": "123 Main St, City",
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "email": "alice@example.com",
+      "phoneNumber": "987-654-3210",
+      "address": "123 Main St",
       "subject": {
-        "id": 101,
-        "name": "Mathematics"
+        "id": 1,
+        "name": "Physics"
       },
-      "salleryBySession": 50
+      "salleryBySession": 150
     }
   ],
   "classrooms": [
     {
-      "id": 101,
-      "name": "Math Class A",
-      "teacherId": 1,
+      "id": 1,
+      "name": "Physics 101",
+      "teacher": {
+        "id": 1,
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "email": "alice@example.com",
+        "phoneNumber": "987-654-3210",
+        "address": "123 Main St",
+        "subject": {
+          "id": 1,
+          "name": "Physics"
+        },
+        "salleryBySession": 150
+      },
       "year": 2023,
       "sessionNumber": 1,
       "maxCapacity": 30,
       "students": [
         {
+          "id": 1,
           "studentId": 1,
-          "classId": 101,
-          "month": "January 2023",
-          "amount": 100,
-          "isPaid": true
-        },
-        {
-          "studentId": 2,
-          "classId": 101,
-          "month": "January 2023",
-          "amount": 100,
-          "isPaid": true
+          "classId": 1,
+          "month": "August 2023",
+          "amount": 150,
+          "isPaid": true,
+          "className": "Physics 101"
         }
       ]
-    },
-    {
-      "id": 102,
-      "name": "Science Class B",
-      "teacherId": 1,
-      "year": 2023,
-      "sessionNumber": 1,
-      "maxCapacity": 25,
-      "students": [
-        {
-          "studentId": 1,
-          "classId": 102,
-          "month": "January 2023",
-          "amount": 120,
-          "isPaid": false
-        }
-      ]
-    },
-    {
-      "id": 103,
-      "name": "Math Class C",
-      "teacherId": 1,
-      "year": 2023,
-      "sessionNumber": 1,
-      "maxCapacity": 20,
-      "students": [
-        {
-          "studentId": 2,
-          "classId": 103,
-          "month": "January 2023",
-          "amount": 110,
-          "isPaid": true
-        }
-      ]
-    }
-  ],
-  "subjects": [
-    {
-      "id": 101,
-      "name": "Mathematics"
-    },
-    {
-      "id": 102,
-      "name": "Science"
     }
   ],
   "paymentRecords": [
     {
       "id": 1,
       "studentId": 1,
-      "classId": 101,
-      "month": "January 2023",
-      "amount": 100,
-      "isPaid": true
-    },
-    {
-      "id": 2,
-      "studentId": 1,
-      "classId": 102,
-      "month": "January 2023",
-      "amount": 120,
-      "isPaid": false
-    },
-    {
-      "id": 3,
-      "studentId": 2,
-      "classId": 101,
-      "month": "January 2023",
-      "amount": 100,
-      "isPaid": true
-    },
-    {
-      "id": 4,
-      "studentId": 2,
-      "classId": 103,
-      "month": "January 2023",
-      "amount": 110,
-      "isPaid": true
-    }
-  ],
-  "payments": [
-    {
-      "id": 1,
-      "teacherId": 1,
-      "classId": 101,
-      "month": "January 2023",
-      "amount": 250,
-      "isPaid": true
-    },
-    {
-      "id": 2,
-      "teacherId": 1,
-      "classId": 102,
-      "month": "January 2023",
-      "amount": 120,
-      "isPaid": false
-    },
-    {
-      "id": 3,
-      "teacherId": 1,
-      "classId": 103,
-      "month": "January 2023",
-      "amount": 220,
-      "isPaid": true
+      "classId": 1,
+      "month": "August 2023",
+      "amount": 150,
+      "isPaid": true,
+      "className": "Physics 101"
     }
   ]
 }

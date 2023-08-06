@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { PaymentRecord } from '../models/payment-record';
 import { Classroom } from '../models/classroom';
+import { Grade } from '../models/grade';
+import { Major } from '../models/major';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +89,27 @@ export class StudentService {
   getClassById(classId: number): Observable<Classroom> {
     const url = `http://localhost:3000/classrooms/${classId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
     return this.http.get<Classroom>(url)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch class details. Please try again later.');
+        })
+      );
+  }
+
+  getGradeById(gradeId: number): Observable<Grade> {
+    const url = `http://localhost:3000/grades/${gradeId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
+    return this.http.get<Grade>(url)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch class details. Please try again later.');
+        })
+      );
+  }
+  getMajorById(majorId: number): Observable<Major> {
+    const url = `http://localhost:3000/majors/${majorId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
+    return this.http.get<Major>(url)
       .pipe(
         catchError((error: any) => {
           console.error('An error occurred:', error);

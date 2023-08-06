@@ -18,9 +18,9 @@ export class AddStudentModalComponent {
   ];
 
   majors = [
-    {id: 1, name: 'Sciences de la Vie et de la Terre'},
-    {id: 2, name: 'Sciences Mathématiques'},
-    {id: 3, name: 'Sciences Physiques et Chimiques'},
+    {id: 2, name: 'SVT'},
+    {id: 3, name: 'Sciences Mathématiques'},
+    {id: 4, name: 'Sciences PC'},
   ];
 
   constructor(

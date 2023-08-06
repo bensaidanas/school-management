@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PaymentRecord } from 'src/app/models/payment-record';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
+import { faArrowLeft, faUserPen } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-student-details',
@@ -10,9 +11,13 @@ import { StudentService } from 'src/app/services/student.service';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
+
+  faEdit = faUserPen
+  faGithub = faArrowLeft
+
   student!: Student;
   paymentRecords!: PaymentRecord[];
-
+  displayedColumns: string[] = ['Class Name', 'Month', 'Amount', 'Status']
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService

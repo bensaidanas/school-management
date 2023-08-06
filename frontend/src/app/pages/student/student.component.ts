@@ -4,6 +4,8 @@ import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 import { AddStudentModalComponent } from './add-student-modal/add-student-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Grade } from 'src/app/models/grade';
+import { Major } from 'src/app/models/major';
 
 @Component({
   selector: 'app-student',
@@ -23,12 +25,41 @@ export class StudentComponent implements OnInit {
     this.studentService.getAllStudents().subscribe(
       (students) => {
         this.students = students;
+        this.populateGrades(students)
+        this.populateMajors(students)
       },
       (error) => {
         console.error(error);
         // Handle error (optional): Show a user-friendly message on the UI.
       }
     );
+  }
+
+  populateGrades(students: Student[]) {
+    for (const student of students) {
+      this.studentService.getGradeById(student.gradeId).subscribe(
+        (grade: Grade) => {
+          student.gradeName = grade.name;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+      
+    }
+  }
+  populateMajors(students: Student[]) {
+    for (const student of students) {
+      this.studentService.getMajorById(student.majorId).subscribe(
+        (major: Major) => {
+          student.majorName = major.name;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+      
+    }
   }
 
   openAddStudentModal(enterAnimationDuration: string, exitAnimationDuration: string) : void {
