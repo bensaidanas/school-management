@@ -1,42 +1,54 @@
-import { Component, OnInit } from '@angular/core';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Subject } from 'src/app/models/subject';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Teacher } from 'src/app/models/teacher';
-import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-add-teacher',
   templateUrl: './add-teacher.component.html',
   styleUrls: ['./add-teacher.component.css']
 })
-export class AddTeacherComponent implements OnInit {
-  selectedSubject!: Subject;
-  phone!: string;
-  address!: string;
-  subjects!: Subject[];
+export class AddTeacherComponent {
+  studentForm: FormGroup;
+  subjects = [
+    {id: 1, name: 'Math'},
+    {id: 2, name: 'SVT'},
+    {id: 3, name: 'PC'},
+    {id: 4, name: 'French'},
+    {id: 5, name: 'English'},
+    {id: 6, name: 'Geography'},
+  ];
 
-  constructor(public ref: DynamicDialogRef, public config: DynamicDialogConfig, private teacherService: TeacherService) { }
-
-  ngOnInit(): void {
+  constructor(
+    public dialogRef: MatDialogRef<AddTeacherComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Partial<Teacher>, private fb: FormBuilder
+  ) {
+    this.studentForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      subjectId: [null, Validators.required],
+    });
   }
 
-  getAllSubjects()  {
-    this.teacherService.getAllSubjects().subscribe(res => {
-      this.subjects = res
-    })
-  }
+  onSaveClick(): void {
+    console.log(this.studentForm)
+    if (this.studentForm.valid) {
+      const formValues = this.studentForm.value;
+      this.data.firstName = formValues.firstName;
+      this.data.lastName = formValues.lastName;
+      this.data.email = formValues.email;
+      this.data.phoneNumber = formValues.phoneNumber;
+      this.data.subjectId = formValues.subjectId;
+      this.data.address = formValues.address;
 
-  confirm(): void {
-    const data: Partial<Teacher> = {
-      address: this.address,
-      phoneNumber: this.phone,
-      subject: this.selectedSubject
+      this.dialogRef.close(this.data);
     }
-    console.log(data)
-    // this.ref.close(data);
   }
 
-  cancel(): void {
-    this.ref.close(null);
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

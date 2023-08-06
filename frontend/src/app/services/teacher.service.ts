@@ -39,7 +39,7 @@ export class TeacherService {
   }
 
   // Add a new teacher
-  addTeacher(teacher: Teacher): Observable<Teacher> {
+  addTeacher(teacher: Partial<Teacher>): Observable<Teacher> {
     return this.http.post<Teacher>(this.apiUrl, teacher)
       .pipe(
         catchError((error: any) => {
@@ -110,7 +110,7 @@ export class TeacherService {
 
   // Get a subject by ID
   getSubjectById(subjectId: number): Observable<Subject> {
-    const url = `${this.apiUrl}/subjects/${subjectId}`;
+    const url = `http://localhost:3000/subjects/${subjectId}`;
     return this.http.get<Subject>(url)
       .pipe(
         catchError((error: any) => {

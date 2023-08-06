@@ -6,6 +6,8 @@ import { AddStudentModalComponent } from './add-student-modal/add-student-modal.
 import { MatDialog } from '@angular/material/dialog';
 import { Grade } from 'src/app/models/grade';
 import { Major } from 'src/app/models/major';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+
 
 @Component({
   selector: 'app-student',
@@ -13,6 +15,7 @@ import { Major } from 'src/app/models/major';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
+  faStudent = faGraduationCap
   students!: Student[];
 
   constructor(private studentService: StudentService, public dialog: MatDialog) { }
@@ -48,6 +51,7 @@ export class StudentComponent implements OnInit {
       
     }
   }
+
   populateMajors(students: Student[]) {
     for (const student of students) {
       this.studentService.getMajorById(student.majorId).subscribe(

@@ -3,6 +3,10 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { Teacher } from 'src/app/models/teacher';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Subject } from 'src/app/models/subject';
+import { faUserTie, faSquareRootVariable, faMicroscope } from '@fortawesome/free-solid-svg-icons'
+
 
 @Component({
   selector: 'app-teacher',
@@ -11,20 +15,24 @@ import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 })
 export class TeacherComponent implements OnInit {
   teachers!: Teacher[];
+  faProf = faUserTie
+  faMath = faSquareRootVariable
+  faSvt = faMicroscope
 
     constructor(
       private teacherService: TeacherService, 
-      private dialogService: DialogService, 
+      public dialog: MatDialog
     ) { }
 
   ngOnInit() {
-    this.getAllStudents();
+    this.getAllTeachers();
   }
 
-  getAllStudents() {
+  getAllTeachers() {
     this.teacherService.getAllTeachers().subscribe(
       (teachers) => {
         this.teachers = teachers;
+        this.populateSubjects(teachers)
       },
       (error) => {
         console.error(error);
@@ -33,30 +41,36 @@ export class TeacherComponent implements OnInit {
     );
   }
 
-  addModal(): void {
-    const dialogRef = this.dialogService.open(AddTeacherComponent, {
-      header: 'New Teacher',
-      width: '70%',
-      contentStyle: { 'min-height': '200px', overflow: 'auto' },
-      baseZIndex: 10000,
-    });
-
-    dialogRef.onClose.subscribe((data: Teacher) => {
-      if (data) {
-        // console.log(data);
-        this.addArticle(data);
-      }
-    });
+  populateSubjects(teachers: Teacher[]) {
+    for (const teacher of teachers) {
+      this.teacherService.getSubjectById(teacher.subjectId).subscribe(
+        (subject: Subject) => {
+          teacher.subjectName = subject.name;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+      
+    }
   }
 
-  addArticle(data: Teacher) {
-    this.teacherService.addTeacher(data).subscribe(
-      (teacher: Teacher) => {
-              this.teachers.unshift(teacher); // Add the new announcement at the beginning of the array
-            },
-            (error: any) => {
-              console.error('An error occurred:', error);
-            }
-    )
+  openModal(enterAnimationDuration: string, exitAnimationDuration: string) : void {
+    const dialogRef = this.dialog.open(AddTeacherComponent, {
+      // height: '500px',
+      width: '700px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result: Partial<Teacher>) => {
+      console.log(result);
+      if (result) {
+        this.teacherService.addTeacher(result).subscribe(res => {
+          this.getAllTeachers();
+        })
+      }
+    });
   }
 }

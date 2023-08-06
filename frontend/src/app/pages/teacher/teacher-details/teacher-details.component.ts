@@ -14,6 +14,7 @@ import { AddTeacherComponent } from '../add-teacher/add-teacher.component';
 export class TeacherDetailsComponent implements OnInit {
   teacher!: Teacher;
   payments!: Payment[];
+  displayedColumns: string[] = ['Class Name', 'Month', 'Amount', 'Status']
 
   constructor(
     private route: ActivatedRoute,
@@ -64,6 +65,5 @@ export class TeacherDetailsComponent implements OnInit {
     }
   }
 
- 
 
 }

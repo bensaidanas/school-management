@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Student } from 'src/app/models/student';
 
 @Component({

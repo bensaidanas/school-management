@@ -1,15 +1,42 @@
-<!-- <div *ngIf="teacher">
+<div *ngIf="teacher">
     <div class="p-4 bg-white rounded-lg shadow-md">
         <div class="h-[40vh] ">
             <h2 class="text-5xl text-center font-semibold ">{{ teacher.firstName }} {{ teacher.lastName }}</h2>
-            <p class="text-lg "><span class="font-bold">Subject:</span> {{ teacher.subject.name }}</p>
+            <p class="text-lg "><span class="font-bold">Subject:</span> {{ teacher.subjectName }}</p>
             <p class="text-lg "><span class="font-bold">Charge by session:</span> {{ teacher.salleryBySession }} MAD</p>
             <p class="text-lg "><span class="font-bold">Email:</span> {{ teacher.email }}</p>
             <p class="text-lg "><span class="font-bold">Phone:</span> {{ teacher.phoneNumber }}</p>
         </div>
         
-        <h3 class="mt-8 mb-2 text-xl font-bold">Payment Records</h3>
-        <p-table [value]="payments">
+        <h3 class="mt-8 mb-2 text-xl font-bold">Payments</h3>
+        <table mat-table [dataSource]="payments" class="mat-elevation-z8">
+            <ng-container matColumnDef="Class Name">
+                <th mat-header-cell *matHeaderCellDef> Class Name </th>
+                <td mat-cell *matCellDef="let element"> {{ element.className }} </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="Month">
+                <th mat-header-cell *matHeaderCellDef> Month </th>
+                <td mat-cell *matCellDef="let element"> {{ element.month }} </td>
+            </ng-container>
+            
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Amount">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{ element.amount }} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> {{ element.isPaid ? 'Paid' : 'Not Paid' }} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <!-- <p-table [value]="payments">
             <ng-template pTemplate="header">
                 <tr>
                 <th>Class Name</th>
@@ -26,6 +53,6 @@
                     <td>{{ paymentRecord.isPaid ? 'Paid' : 'Not Paid' }}</td>
                 </tr>
             </ng-template>
-        </p-table>
+        </p-table> -->
     </div>
-</div> -->
+</div>

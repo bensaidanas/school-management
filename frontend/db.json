@@ -103,6 +103,32 @@
       "name": "Deuxième année Bac"
     }
   ],
+  "subjects": [
+    {
+      "id": 1,
+      "name": "Math"
+    },
+    {
+      "id": 2,
+      "name": "SVT"
+    },
+    {
+      "id": 3,
+      "name": "PC"
+    },
+    {
+      "id": 4,
+      "name": "French"
+    },
+    {
+      "id": 5,
+      "name": "English"
+    },
+    {
+      "id": 6,
+      "name": "Geography"
+    }
+  ],
   "teachers": [
     {
       "id": 1,
@@ -111,11 +137,26 @@
       "email": "alice@example.com",
       "phoneNumber": "987-654-3210",
       "address": "123 Main St",
-      "subject": {
-        "id": 1,
-        "name": "Physics"
-      },
+      "subjectId": 1,
       "salleryBySession": 150
+    },
+    {
+      "subjectId": 1,
+      "firstName": "Hicham",
+      "lastName": "Benchaikh",
+      "email": "hicham@gmail.com",
+      "phoneNumber": "0689743241",
+      "address": "Hay Riad, Rabat",
+      "id": 2
+    },
+    {
+      "subjectId": 2,
+      "firstName": "Younes",
+      "lastName": "Etazarini",
+      "email": "younes@gmail.com",
+      "phoneNumber": "0641879523",
+      "address": "Hay Riad, Rabat",
+      "id": 3
     }
   ],
   "classrooms": [
