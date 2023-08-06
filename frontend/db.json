@@ -162,7 +162,7 @@
   "classrooms": [
     {
       "id": 1,
-      "name": "Physics 101",
+      "name": "Math 101",
       "teacher": {
         "id": 1,
         "firstName": "Alice",
@@ -170,13 +170,10 @@
         "email": "alice@example.com",
         "phoneNumber": "987-654-3210",
         "address": "123 Main St",
-        "subject": {
-          "id": 1,
-          "name": "Physics"
-        },
+        "subjectId": 1,
         "salleryBySession": 150
       },
-      "year": 2023,
+      "gradeId": 1,
       "sessionNumber": 1,
       "maxCapacity": 30,
       "students": [
@@ -190,6 +187,36 @@
           "className": "Physics 101"
         }
       ]
+    },
+    {
+      "gradeId": 2,
+      "teacher": {
+        "subjectId": 1,
+        "firstName": "Hicham",
+        "lastName": "Benchaikh",
+        "email": "hicham@gmail.com",
+        "phoneNumber": "0689743241",
+        "address": "Hay Riad, Rabat",
+        "id": 2
+      },
+      "name": "Math 201",
+      "sessionNumber": "8",
+      "id": 2
+    },
+    {
+      "gradeId": 3,
+      "teacher": {
+        "subjectId": 2,
+        "firstName": "Younes",
+        "lastName": "Etazarini",
+        "email": "younes@gmail.com",
+        "phoneNumber": "0641879523",
+        "address": "Hay Riad, Rabat",
+        "id": 3
+      },
+      "name": "SVT 301",
+      "sessionNumber": "8",
+      "id": 3
     }
   ],
   "paymentRecords": [
