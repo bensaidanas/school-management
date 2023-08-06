@@ -7,7 +7,7 @@ import { Grade } from 'src/app/models/grade';
 import { Teacher } from 'src/app/models/teacher';
 import { Subject } from 'src/app/models/subject';
 import { TeacherService } from 'src/app/services/teacher.service';
-import { faUserTie, faSquareRootVariable, faMicroscope } from '@fortawesome/free-solid-svg-icons'
+import { faLanguage, faSquareRootVariable, faMicroscope } from '@fortawesome/free-solid-svg-icons'
 
 
 @Component({
@@ -18,7 +18,9 @@ import { faUserTie, faSquareRootVariable, faMicroscope } from '@fortawesome/free
 export class ClassroomComponent implements OnInit {
   faMath = faSquareRootVariable
   faSvt = faMicroscope
+  faLanguage = faLanguage
   classrooms!: Classroom[];
+
 
   constructor(private classService: ClassService, public dialog: MatDialog, private teacherService: TeacherService) { }
 

@@ -9,6 +9,7 @@
                 <!-- <i class="pi pi-user opacity-50 text-8xl absolute -bottom-1 left-0"></i> -->
                 <fa-icon *ngIf="class.teacher.subjectName === 'Math'" [icon]="faMath" class="text-7xl text-blue-600 absolute top-50 left-2" ></fa-icon>
                 <fa-icon *ngIf="class.teacher.subjectName === 'SVT'" [icon]="faSvt" class="text-7xl text-green-600 absolute top-50 left-2" ></fa-icon>
+                <fa-icon *ngIf="class.teacher.subjectName === 'French' || class.teacher.subjectName === 'English'" [icon]="faLanguage" class="text-7xl text-sky-600 absolute top-50 left-2" ></fa-icon>
 
             </div>
             <div class="w-[60%]">

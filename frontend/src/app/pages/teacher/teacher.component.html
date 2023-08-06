@@ -11,7 +11,8 @@
                 <!-- <p class="text-sm text-gray-600">{{ student.year }}th Year</p> -->
             </div>
             <fa-icon *ngIf="teacher.subjectId === 1" [icon]="faMath" class=" text-blue-600 text-6xl absolute -bottom-1 right-15" ></fa-icon>
-            <fa-icon *ngIf="teacher.subjectId === 2" [icon]="faSvt" class=" text-yellow-600 text-6xl absolute -bottom-1 right-15" ></fa-icon>
+            <fa-icon *ngIf="teacher.subjectId === 2" [icon]="faSvt" class=" text-green-600 text-6xl absolute -bottom-1 right-15" ></fa-icon>
+            <fa-icon *ngIf="teacher.subjectName === 'French' || teacher.subjectName === 'English'" [icon]="faLanguage" class="text-sky-600 text-6xl absolute -bottom-1 right-15" ></fa-icon>
 
         </a>
     </div>

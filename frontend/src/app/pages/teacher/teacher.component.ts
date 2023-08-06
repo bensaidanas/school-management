@@ -5,7 +5,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'src/app/models/subject';
-import { faUserTie, faSquareRootVariable, faMicroscope } from '@fortawesome/free-solid-svg-icons'
+import { faUserTie, faSquareRootVariable, faMicroscope, faLanguage } from '@fortawesome/free-solid-svg-icons'
 
 
 @Component({
@@ -18,6 +18,7 @@ export class TeacherComponent implements OnInit {
   faProf = faUserTie
   faMath = faSquareRootVariable
   faSvt = faMicroscope
+  faLanguage = faLanguage
 
     constructor(
       private teacherService: TeacherService, 

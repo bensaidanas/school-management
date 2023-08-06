@@ -19,6 +19,7 @@ import { TeacherDetailsComponent } from './pages/teacher/teacher-details/teacher
 import { AddTeacherComponent } from './pages/teacher/add-teacher/add-teacher.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddClassComponent } from './pages/classroom/add-class/add-class.component';
+import { ClassDetailsComponent } from './pages/classroom/class-details/class-details.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AddClassComponent } from './pages/classroom/add-class/add-class.compone
     AddStudentModalComponent,
     TeacherDetailsComponent,
     AddTeacherComponent,
-    AddClassComponent
+    AddClassComponent,
+    ClassDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,63 @@
+<div *ngIf="classroom">
+    <div class="flex justify-between items-center w-[82vw] fixed top-0 right-0 px-4 py-3 bg-neutral-100">
+        <a routerLink='/class' class="py-2 px-3 w-fit rounded-lg hover:scale-105 transition-all duration-300 bg-lime-500">
+            <fa-icon [icon]="faGithub" class="text-3xl text-white" ></fa-icon>
+        </a>
+        <h2 class="text-5xl text-center font-semibold ">{{ classroom.name }}</h2>
+        <div class="py-2 px-3 flex justify-center items-center w-fit rounded-full  cursor-pointer hover:bg-gray-200">
+            <fa-icon [icon]="faEdit" class="text-3xl text-lime-500"></fa-icon>
+        </div>
+    </div>
+    <div class="mt-14">
+        <div class="flex gap-5">
+            <div class="flex flex-col gap-2 bg-neutral-200 px-4 py-3 rounded-xl w-[50%]">
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Class Grade:</p> 
+                    <p>{{classroom.gradeName}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Number of Sessions:</p> 
+                    <p>{{classroom.sessionNumber}} sessions</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Class Price:</p> 
+                    <p>200 MAD</p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2 relative bg-neutral-200 px-4 py-3 rounded-xl w-[50%]">
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Teacher:</p> 
+                    <p>{{classroom.teacher.firstName}} {{classroom.teacher.lastName}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Class Subject:</p> 
+                    <p>{{classroom.teacher.subjectName}}</p>
+                </div>
+                <!-- <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Class Price:</p> 
+                    <p>200 MAD</p>
+                </div> -->
+                <fa-icon *ngIf="classroom.teacher.subjectId === 1" [icon]="faMath" class=" text-blue-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
+                <fa-icon *ngIf="classroom.teacher.subjectId === 2" [icon]="faSvt" class=" text-green-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
+                <fa-icon *ngIf="classroom.teacher.subjectName === 'French' || classroom.teacher.subjectName === 'English'" [icon]="faLanguage" class="text-sky-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
+            </div>
+        </div>
+        
+        <div class="flex mt-4 flex-col items-center gap-3">
+            <div class="min-w-[19rem] px-3 h-40 flex flex-col items-center justify-center gap-2 bg-neutral-200 rounded-lg">
+                <fa-icon [icon]="faProf" class="text-black text-6xl" ></fa-icon>
+                <p class="text-3xl font-bold">{{classroom.teacher.firstName}} {{classroom.teacher.lastName}}</p>
+            </div>
+            <div *ngIf="students" class="grid grid-cols-1 w-full md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div *ngFor="let student of students" class="bg-neutral-200 hover:scale-105  cursor-pointer duration-300 transition-all rounded-lg shadow-md relative px-3 py-2 flex justify-center items-center">
+                    <div class="px-3 flex flex-col items-center opacity-50 hover:opacity-100 duration-300 transition-all justify-center gap-2 bg-neutral-200 rounded-lg">
+                        <fa-icon [icon]="faStudent" class="text-black text-4xl" ></fa-icon>
+                        <p class="text-3xl font-bold">{{student.firstName}} {{student.lastName}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</div>
