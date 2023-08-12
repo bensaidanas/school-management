@@ -45,7 +45,7 @@ export class AddStudentModalComponent {
       this.data.email = formValues.email;
       this.data.phoneNumber = formValues.phoneNumber;
       this.data.grade = formValues.grade;
-      this.data.major = formValues.major;
+      this.data.major = formValues.major || {id: 1};
 
       this.dialogRef.close(this.data);
     }

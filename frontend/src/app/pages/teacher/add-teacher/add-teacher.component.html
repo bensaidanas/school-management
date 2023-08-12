@@ -27,10 +27,14 @@
                             <mat-label>Address</mat-label>
                             <input matInput formControlName="address">
                         </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Salary By Session</mat-label>
+                            <input type="number" matInput formControlName="salaryBySession">
+                        </mat-form-field>
                         <mat-form-field>
                             <mat-label>Subject</mat-label>
-                            <mat-select [(ngModel)]="data.subjectId" formControlName="subjectId" required>
-                                <mat-option *ngFor="let subject of subjects" [value]="subject.id">
+                            <mat-select [(ngModel)]="data.subject" formControlName="subject" required>
+                                <mat-option *ngFor="let subject of subjects" [value]="subject">
                                     {{subject.name}}
                                 </mat-option>
                             </mat-select>

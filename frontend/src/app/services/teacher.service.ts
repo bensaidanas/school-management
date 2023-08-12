@@ -11,7 +11,7 @@ import { Subject } from '../models/subject';
 })
 export class TeacherService {
 
-  private apiUrl = 'http://localhost:3000/teachers'; // Replace this with the actual API URL to your json-server
+  private apiUrl = 'http://localhost:8080/teachers'; // Replace this with the actual API URL to your json-server
 
   constructor(private http: HttpClient) { }
 
@@ -96,27 +96,5 @@ export class TeacherService {
       );
   }
 
-  // Get all subjects
-  getAllSubjects(): Observable<Subject[]> {
-    const url = `${this.apiUrl}/subjects`;
-    return this.http.get<Subject[]>(url)
-      .pipe(
-        catchError((error: any) => {
-          console.error('An error occurred:', error);
-          return throwError('Failed to fetch subjects. Please try again later.');
-        })
-      );
-  }
-
-  // Get a subject by ID
-  getSubjectById(subjectId: number): Observable<Subject> {
-    const url = `http://localhost:3000/subjects/${subjectId}`;
-    return this.http.get<Subject>(url)
-      .pipe(
-        catchError((error: any) => {
-          console.error('An error occurred:', error);
-          return throwError('Failed to fetch subject. Please try again later.');
-        })
-      );
-  }
+  
 }

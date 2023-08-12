@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Subject } from 'src/app/models/subject';
 import { Teacher } from 'src/app/models/teacher';
+import { SubjectService } from 'src/app/services/subject.service';
 
 @Component({
   selector: 'app-add-teacher',
@@ -10,27 +12,28 @@ import { Teacher } from 'src/app/models/teacher';
 })
 export class AddTeacherComponent {
   studentForm: FormGroup;
-  subjects = [
-    {id: 1, name: 'Math'},
-    {id: 2, name: 'SVT'},
-    {id: 3, name: 'PC'},
-    {id: 4, name: 'French'},
-    {id: 5, name: 'English'},
-    {id: 6, name: 'Geography'},
-  ];
+  subjects?: Subject[]
 
   constructor(
     public dialogRef: MatDialogRef<AddTeacherComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Partial<Teacher>, private fb: FormBuilder
+    @Inject(MAT_DIALOG_DATA) public data: Partial<Teacher>, private fb: FormBuilder, private subjectService: SubjectService
   ) {
+    this.getAllSubjects();
     this.studentForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      subjectId: [null, Validators.required],
+      salaryBySession: ['', [Validators.required]],
+      subject: [null, Validators.required],
     });
+  }
+
+  getAllSubjects() {
+    this.subjectService.getAllSubjects().subscribe((res) => {
+      this.subjects = res
+    })
   }
 
   onSaveClick(): void {
@@ -41,8 +44,9 @@ export class AddTeacherComponent {
       this.data.lastName = formValues.lastName;
       this.data.email = formValues.email;
       this.data.phoneNumber = formValues.phoneNumber;
-      this.data.subjectId = formValues.subjectId;
       this.data.address = formValues.address;
+      this.data.salaryBySession = formValues.salaryBySession;
+      this.data.subject = formValues.subject;
 
       this.dialogRef.close(this.data);
     }

@@ -33,7 +33,6 @@ export class TeacherComponent implements OnInit {
     this.teacherService.getAllTeachers().subscribe(
       (teachers) => {
         this.teachers = teachers;
-        this.populateSubjects(teachers)
       },
       (error) => {
         console.error(error);
@@ -42,19 +41,7 @@ export class TeacherComponent implements OnInit {
     );
   }
 
-  populateSubjects(teachers: Teacher[]) {
-    for (const teacher of teachers) {
-      this.teacherService.getSubjectById(teacher.subjectId).subscribe(
-        (subject: Subject) => {
-          teacher.subjectName = subject.name;
-        },
-        error => {
-          console.error(error);
-        }
-      );
-      
-    }
-  }
+  
 
   openModal(enterAnimationDuration: string, exitAnimationDuration: string) : void {
     const dialogRef = this.dialog.open(AddTeacherComponent, {

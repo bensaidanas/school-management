@@ -2,8 +2,8 @@
     <div class="p-4 bg-white rounded-lg shadow-md">
         <div class="h-[40vh] ">
             <h2 class="text-5xl text-center font-semibold ">{{ teacher.firstName }} {{ teacher.lastName }}</h2>
-            <p class="text-lg "><span class="font-bold">Subject:</span> {{ teacher.subjectName }}</p>
-            <p class="text-lg "><span class="font-bold">Charge by session:</span> {{ teacher.salleryBySession }} MAD</p>
+            <p class="text-lg "><span class="font-bold">Subject:</span> {{ teacher.subject.name }}</p>
+            <p class="text-lg "><span class="font-bold">Charge by session:</span> {{ teacher.salaryBySession }} MAD</p>
             <p class="text-lg "><span class="font-bold">Email:</span> {{ teacher.email }}</p>
             <p class="text-lg "><span class="font-bold">Phone:</span> {{ teacher.phoneNumber }}</p>
         </div>

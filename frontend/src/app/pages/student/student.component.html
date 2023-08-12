@@ -3,10 +3,10 @@
     [class.border-yellow]="student.grade.id === 2"
     [class.border-green]="student.grade.id === 3"
     *ngFor="let student of students" class="bg-gray-200   hover:scale-105 cursor-pointer duration-300 transition-all rounded-lg shadow-md relative p-4 flex justify-end items-center">
-        <a class="w-full h-16 flex justify-end items-start " [routerLink]="['/student-details', student.id]">
+        <a class="w-full h-16 flex justify-end items-start relative" [routerLink]="['/student-details', student.id]">
             <div class="mr-4">
                 <!-- <i class="pi pi-user opacity-50 text-8xl absolute -bottom-1 left-0"></i> -->
-                <fa-icon [icon]="faStudent" class="opacity-50 text-7xl absolute top-50 left-0" ></fa-icon>
+                <fa-icon [icon]="faStudent" class="opacity-50 text-7xl absolute top-0 left-0" ></fa-icon>
 
             </div>
             <div class="w-[60%]">

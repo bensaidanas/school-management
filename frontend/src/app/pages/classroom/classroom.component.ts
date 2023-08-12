@@ -33,7 +33,6 @@ export class ClassroomComponent implements OnInit {
       (classrooms) => {
         this.classrooms = classrooms;
         this.populateGrades(classrooms)
-        this.populateSubjects(classrooms.map(classroom => classroom.teacher));
       },
       (error) => {
         console.error(error);
@@ -56,19 +55,7 @@ export class ClassroomComponent implements OnInit {
     }
   }
 
-  populateSubjects(teachers: Teacher[]) {
-    for (const teacher of teachers) {
-      this.teacherService.getSubjectById(teacher.subjectId).subscribe(
-        (subject: Subject) => {
-          teacher.subjectName = subject.name;
-        },
-        error => {
-          console.error(error);
-        }
-      );
-      
-    }
-  }
+  
 
   
 

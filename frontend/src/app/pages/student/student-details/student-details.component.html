@@ -11,7 +11,7 @@
         <div class="h-[40vh] ">
             <h2 class="text-5xl text-center font-semibold ">{{ student.firstName }} {{ student.lastName }}</h2>
             <p class="text-lg "><span class="font-bold">Grad:</span> {{ student.grade.name }}</p>
-            <p class="text-lg "><span class="font-bold">Major:</span> {{ student.major.name }}</p>
+            <p *ngIf="student.major.id !== 1" class="text-lg "><span class="font-bold">Major:</span> {{ student.major.name }}</p>
             <p class="text-lg "><span class="font-bold">Email:</span> {{ student.email }}</p>
             <p class="text-lg "><span class="font-bold">Phone:</span> {{ student.phoneNumber }}</p>
         </div>

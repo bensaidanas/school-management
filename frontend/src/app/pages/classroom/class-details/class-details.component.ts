@@ -55,7 +55,6 @@ export class ClassDetailsComponent implements OnInit {
       classroom => {
         this.classroom = classroom;
         this.populateGrades(classroom)
-        this.populateSubject(classroom.teacher)
       },
       error => {
         console.error(error);
@@ -72,15 +71,5 @@ export class ClassDetailsComponent implements OnInit {
           console.error(error);
         })
   }
-  populateSubject(teacher: Teacher) {
-      this.teacherService.getSubjectById(teacher.subjectId).subscribe(
-        (subject: Subject) => {
-          teacher.subjectName = subject.name;
-        },
-        error => {
-          console.error(error);
-        }
-      );
-      
-  }
+  
 }
