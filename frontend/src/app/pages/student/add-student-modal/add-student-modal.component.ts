@@ -31,8 +31,8 @@ export class AddStudentModalComponent {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required]],
-      gradeId: [null, Validators.required],
-      majorId: [null]
+      grade: [null, Validators.required],
+      major: [null]
     });
   }
 
@@ -44,8 +44,8 @@ export class AddStudentModalComponent {
       this.data.lastName = formValues.lastName;
       this.data.email = formValues.email;
       this.data.phoneNumber = formValues.phoneNumber;
-      this.data.gradeId = formValues.gradeId;
-      this.data.majorId = formValues.majorId;
+      this.data.grade = formValues.grade;
+      this.data.major = formValues.major;
 
       this.dialogRef.close(this.data);
     }

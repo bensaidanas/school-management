@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Grade } from 'src/app/models/grade';
 import { Major } from 'src/app/models/major';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import { GradeService } from 'src/app/services/grade.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class StudentComponent implements OnInit {
   faStudent = faGraduationCap
   students!: Student[];
 
-  constructor(private studentService: StudentService, public dialog: MatDialog) { }
+  constructor(private studentService: StudentService, private gradeService: GradeService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAllStudents();
@@ -28,8 +29,6 @@ export class StudentComponent implements OnInit {
     this.studentService.getAllStudents().subscribe(
       (students) => {
         this.students = students;
-        this.populateGrades(students)
-        this.populateMajors(students)
       },
       (error) => {
         console.error(error);
@@ -38,33 +37,33 @@ export class StudentComponent implements OnInit {
     );
   }
 
-  populateGrades(students: Student[]) {
-    for (const student of students) {
-      this.studentService.getGradeById(student.gradeId).subscribe(
-        (grade: Grade) => {
-          student.gradeName = grade.name;
-        },
-        error => {
-          console.error(error);
-        }
-      );
+  // populateGrades(students: Student[]) {
+  //   for (const student of students) {
+  //     this.gradeService.getGradeById(student.gradeId).subscribe(
+  //       (grade: Grade) => {
+  //         student.gradeName = grade.name;
+  //       },
+  //       error => {
+  //         console.error(error);
+  //       }
+  //     );
       
-    }
-  }
+  //   }
+  // }
 
-  populateMajors(students: Student[]) {
-    for (const student of students) {
-      this.studentService.getMajorById(student.majorId).subscribe(
-        (major: Major) => {
-          student.majorName = major.name;
-        },
-        error => {
-          console.error(error);
-        }
-      );
+  // populateMajors(students: Student[]) {
+  //   for (const student of students) {
+  //     this.studentService.getMajorById(student.majorId).subscribe(
+  //       (major: Major) => {
+  //         student.majorName = major.name;
+  //       },
+  //       error => {
+  //         console.error(error);
+  //       }
+  //     );
       
-    }
-  }
+  //   }
+  // }
 
   openAddStudentModal(enterAnimationDuration: string, exitAnimationDuration: string) : void {
     const dialogRef = this.dialog.open(AddStudentModalComponent, {

@@ -4,6 +4,7 @@ import { PaymentRecord } from 'src/app/models/payment-record';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 import { faArrowLeft, faUserPen } from '@fortawesome/free-solid-svg-icons'
+import { GradeService } from 'src/app/services/grade.service';
 
 @Component({
   selector: 'app-student-details',
@@ -20,7 +21,8 @@ export class StudentDetailsComponent implements OnInit {
   displayedColumns: string[] = ['Class Name', 'Month', 'Amount', 'Status']
   constructor(
     private route: ActivatedRoute,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private gradeService: GradeService
   ) {}
 
   ngOnInit() {

@@ -1,54 +1,53 @@
 
 <div class="flex flex-col  justify-between h-full">
-  <div>
-      <h1 mat-dialog-title>New Student</h1>
-      <div mat-dialog-content>
-          <!-- <p></p> -->
-              <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
+    <div>
+        <h1 mat-dialog-title>New Student</h1>
+        <div mat-dialog-content>
+            <!-- <p></p> -->
+            <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
                 <div class="grid grid-cols-2 w-full gap-2">
-                  <mat-form-field class="w-full">
+                <mat-form-field class="w-full">
                     <mat-label>First Name</mat-label>
                     <input matInput formControlName="firstName" required>
-                  </mat-form-field>
-                  <mat-form-field class="w-full">
-                      <mat-label>Last Name</mat-label>
-                      <input matInput formControlName="lastName" required>
-                  </mat-form-field>
-                  <mat-form-field class="w-full">
-                      <mat-label>Enter your email</mat-label>
-                      <input matInput placeholder="nadir@example.com" formControlName="email"  required>
-                      <mat-error></mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="w-full">
-                      <mat-label>Phone Number</mat-label>
-                      <input matInput formControlName="phoneNumber">
-                  </mat-form-field>
-                  <mat-form-field>
-                      <mat-label>Your Grade</mat-label>
-                      <mat-select [(ngModel)]="data.gradeId" formControlName="gradeId" required>
-                          <mat-option *ngFor="let grade of grades" [value]="grade.id">
-                              {{grade.name}}
-                          </mat-option>
-                      </mat-select>
-                      <!-- <mat-error *ngIf="gradeControl.hasError('required')">Please choose a grade</mat-error> -->
-                      <mat-hint></mat-hint>
-                  </mat-form-field>
-                  <mat-form-field *ngIf="data.gradeId === 2 || data.gradeId === 3">
-                      <mat-label>Your Major</mat-label>
-                      <mat-select [(ngModel)]="data.majorId" formControlName="majorId">
-                          <mat-option *ngFor="let major of majors" [value]="major.id">
-                              {{major.name}}
-                          </mat-option>
-                      </mat-select>
-                  </mat-form-field>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" required>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="nadir@example.com" formControlName="email"  required>
+                    <mat-error></mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput formControlName="phoneNumber">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Your Grade</mat-label>
+                    <mat-select [(ngModel)]="data.grade" formControlName="grade" required>
+                        <mat-option *ngFor="let grade of grades" [value]="grade">
+                            {{grade.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+                <mat-form-field *ngIf="data.grade?.id === 2 || data.grade?.id === 3">
+                    <mat-label>Your Major</mat-label>
+                    <mat-select [(ngModel)]="data.major" formControlName="major">
+                        <mat-option *ngFor="let major of majors" [value]="major">
+                            {{major.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
                 </div>
-                  
+                
                 <div class="flex justify-between items-center w-full gap-2">
-                  <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Cancel</button>
-                  <button  type="submit" cdkFocusInitial  class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-lime-500 font-bold hover:bg-lime-400 text-white">Submit</button>
+                    <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Cancel</button>
+                    <button  type="submit" cdkFocusInitial  class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-lime-500 font-bold hover:bg-lime-400 text-white">Submit</button>
                 </div>
-              </form>
-      </div>
-  </div>
-  
+                
+            </form>
+        </div>
+    </div>
 </div>

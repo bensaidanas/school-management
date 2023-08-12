@@ -11,7 +11,7 @@ import { Major } from '../models/major';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiUrl = 'http://localhost:3000/students'; 
+  private apiUrl = 'http://localhost:8080/students'; 
 
   constructor(private http: HttpClient) { }
 
@@ -97,16 +97,7 @@ export class StudentService {
       );
   }
 
-  getGradeById(gradeId: number): Observable<Grade> {
-    const url = `http://localhost:3000/grades/${gradeId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
-    return this.http.get<Grade>(url)
-      .pipe(
-        catchError((error: any) => {
-          console.error('An error occurred:', error);
-          return throwError('Failed to fetch class details. Please try again later.');
-        })
-      );
-  }
+  
   getMajorById(majorId: number): Observable<Major> {
     const url = `http://localhost:3000/majors/${majorId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
     return this.http.get<Major>(url)
