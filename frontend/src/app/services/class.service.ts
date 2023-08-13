@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Classroom } from '../models/classroom';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Grade } from '../models/grade';
+import { Student } from '../models/student';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassService {
 
-  private apiUrl = 'http://localhost:3000/classrooms'; 
+  private apiUrl = 'http://localhost:8080/classrooms'; 
 
   constructor(private http: HttpClient) { }
 
@@ -47,14 +48,13 @@ export class ClassService {
       );
   }
 
-  getGradeById(gradeId: number): Observable<Grade> {
-    const url = `http://localhost:3000/grades/${gradeId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
-    return this.http.get<Grade>(url)
+  getStudentsNotInClass(classId: number): Observable<Student[]> {
+    return this.http.get<Student[]>(`${this.apiUrl}/${classId}/students`)
       .pipe(
         catchError((error: any) => {
           console.error('An error occurred:', error);
-          return throwError('Failed to fetch class details. Please try again later.');
+          return throwError('Failed to get students. Please try again later.');
         })
-      );
+      )
   }
 }

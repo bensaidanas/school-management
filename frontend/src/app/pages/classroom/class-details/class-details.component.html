@@ -13,7 +13,7 @@
             <div class="flex flex-col gap-2 bg-neutral-200 px-4 py-3 rounded-xl w-[50%]">
                 <div class="text-xl flex gap-3  w-fit">
                     <p class="font-bold">Class Grade:</p> 
-                    <p>{{classroom.gradeName}}</p>
+                    <p>{{classroom.grade.name}}</p>
                 </div>
                 <div class="text-xl flex gap-3  w-fit">
                     <p class="font-bold">Number of Sessions:</p> 
@@ -21,7 +21,7 @@
                 </div>
                 <div class="text-xl flex gap-3  w-fit">
                     <p class="font-bold">Class Price:</p> 
-                    <p>200 MAD</p>
+                    <p>{{classroom.price}} MAD</p>
                 </div>
             </div>
             <div class="flex flex-col gap-2 relative bg-neutral-200 px-4 py-3 rounded-xl w-[50%]">
@@ -37,8 +37,8 @@
                     <p class="font-bold">Class Price:</p> 
                     <p>200 MAD</p>
                 </div> -->
-                <fa-icon *ngIf="classroom.teacher.subject.id === 1" [icon]="faMath" class=" text-blue-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
-                <fa-icon *ngIf="classroom.teacher.subject.id === 2" [icon]="faSvt" class=" text-green-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
+                <fa-icon *ngIf="classroom.teacher.subject.name === 'Math'" [icon]="faMath" class=" text-blue-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
+                <fa-icon *ngIf="classroom.teacher.subject.name === 'SVT'" [icon]="faSvt" class=" text-green-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
                 <fa-icon *ngIf="classroom.teacher.subject.name === 'French' || classroom.teacher.subject.name === 'English'" [icon]="faLanguage" class="text-sky-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
             </div>
         </div>
@@ -58,6 +58,5 @@
             </div>
         </div>
         
-
     </div>
 </div>

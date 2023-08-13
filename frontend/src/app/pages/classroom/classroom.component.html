@@ -1,8 +1,8 @@
 <div *ngIf="classrooms" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     <div
-    [class.border-blue]="class.gradeId === 1"
-    [class.border-yellow]="class.gradeId === 2"
-    [class.border-green]="class.gradeId === 3" 
+    [class.border-blue]="class.grade.id === 1"
+    [class.border-yellow]="class.grade.id === 2"
+    [class.border-green]="class.grade.id === 3" 
     *ngFor="let class of classrooms" class="bg-gray-200   hover:scale-105 cursor-pointer duration-300 transition-all rounded-lg shadow-md relative p-4 flex justify-end items-center">
         <a class="w-full h-16 flex justify-end items-start " [routerLink]="['/class-details', class.id]">
             <div class="mr-4">
@@ -14,7 +14,7 @@
             </div>
             <div class="w-[60%]">
                 <h3 class="text-lg font-semibold">{{ class.name }}</h3>
-                <p class="text-sm text-gray-600">{{ class.gradeName }}</p>
+                <p class="text-sm text-gray-600">{{ class.grade.name }}</p>
                 <p class="text-sm text-gray-600">{{ class.teacher.subject.name }}</p>
                 <!-- <p *ngIf="student.majorId !== 1" class="text-sm text-gray-600">{{ student.majorName }}</p> -->
             </div>

@@ -11,8 +11,8 @@
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Class Grade</mat-label>
-                        <mat-select [(ngModel)]="data.gradeId" formControlName="gradeId" required>
-                            <mat-option *ngFor="let grade of grades" [value]="grade.id">
+                        <mat-select [(ngModel)]="data.grade" formControlName="grade" required>
+                            <mat-option *ngFor="let grade of grades" [value]="grade">
                                 {{grade.name}}
                             </mat-option>
                         </mat-select>

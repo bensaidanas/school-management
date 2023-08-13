@@ -5,6 +5,7 @@ import { faArrowLeft, faPenToSquare, faSquareRootVariable, faMicroscope, faLangu
 
 import { Classroom } from 'src/app/models/classroom';
 import { Grade } from 'src/app/models/grade';
+import { Student } from 'src/app/models/student';
 import { Subject } from 'src/app/models/subject';
 import { Teacher } from 'src/app/models/teacher';
 import { ClassService } from 'src/app/services/class.service';
@@ -25,16 +26,7 @@ export class ClassDetailsComponent implements OnInit {
   faProf = faUserTie
   faStudent = faGraduationCap
 
-  students = [
-    {id: 1, firstName: "Anas", lastName: "Bensaid"},
-    {id: 2, firstName: "Nadir", lastName: "Nadir"},
-    {id: 3, firstName: "Omar", lastName: "Bennaoui"},
-    {id: 4, firstName: "Jhon", lastName: "Doe"},
-    {id: 4, firstName: "Jhon", lastName: "Doe"},
-    {id: 4, firstName: "Jhon", lastName: "Doe"},
-    {id: 4, firstName: "Jhon", lastName: "Doe"},
-    {id: 4, firstName: "Jhon", lastName: "Doe"},
-  ]
+  students?: Student[];
 
   classroom!: Classroom;
   constructor(
@@ -54,7 +46,7 @@ export class ClassDetailsComponent implements OnInit {
     this.classService.getClassById(classId).subscribe(
       classroom => {
         this.classroom = classroom;
-        this.populateGrades(classroom)
+        this.students = this.classroom.students
       },
       error => {
         console.error(error);
@@ -62,14 +54,6 @@ export class ClassDetailsComponent implements OnInit {
     );
   }
 
-  populateGrades(classroom: Classroom) {
-      this.classService.getGradeById(classroom.gradeId).subscribe(
-        (grade: Grade) => {
-          classroom.gradeName = grade.name;
-        },
-        error => {
-          console.error(error);
-        })
-  }
+
   
 }

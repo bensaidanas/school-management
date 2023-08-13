@@ -28,7 +28,7 @@ export class AddClassComponent {
     this.studentForm = this.fb.group({
       className: ['', Validators.required],
       sessionsNumber: ['', Validators.required],
-      gradeId: [null, Validators.required],
+      grade: [null, Validators.required],
       teacher: [null, Validators.required],
     });
   }
@@ -44,7 +44,7 @@ export class AddClassComponent {
     if (this.studentForm.valid) {
       const formValues = this.studentForm.value;
       this.data.name = formValues.className;
-      this.data.gradeId = formValues.gradeId;
+      this.data.grade = formValues.grade;
       this.data.teacher = formValues.teacher;
       this.data.sessionNumber = formValues.sessionsNumber;
 

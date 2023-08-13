@@ -2,14 +2,15 @@
 
 import { Teacher } from "./teacher";
 import { PaymentRecord } from "./payment-record";
+import { Grade } from "./grade";
+import { Student } from "./student";
 
 export interface Classroom {
     id: number;
     name: string;
     teacher: Teacher;
-    gradeId: number;
-    gradeName: string;
+    grade: Grade;
     sessionNumber: number;
-    maxCapacity: number;
-    students: PaymentRecord[]; // An array of PaymentRecord objects representing the students in this classroom
+    price: number;
+    students: Student[]; // An array of PaymentRecord objects representing the students in this classroom
 }
