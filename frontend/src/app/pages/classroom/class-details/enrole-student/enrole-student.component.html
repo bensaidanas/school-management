@@ -1,0 +1,24 @@
+<div class="flex flex-col  justify-between h-full">
+    <div>
+        <h1 mat-dialog-title>New Class</h1>
+        <div mat-dialog-content>
+            <!-- <p></p> -->
+            <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
+                <div class="grid grid-cols-1 w-full gap-2">
+                    <mat-form-field>
+                        <mat-label>Students</mat-label>
+                        <mat-select formControlName="studentId" required>
+                            <mat-option *ngFor="let student of students" [value]="student.id">
+                                {{student.firstName}} {{student.lastName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="flex justify-between items-center w-full gap-2">
+                    <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Cancel</button>
+                    <button  type="submit" cdkFocusInitial  class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-lime-500 font-bold hover:bg-lime-400 text-white">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

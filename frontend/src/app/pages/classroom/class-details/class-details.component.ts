@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { faArrowLeft, faPenToSquare, faSquareRootVariable, faMicroscope, faLanguage, faUserTie, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faPlus, faPenToSquare, faSquareRootVariable, faMicroscope, faLanguage, faUserTie, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 
 
 import { Classroom } from 'src/app/models/classroom';
@@ -11,6 +12,8 @@ import { Teacher } from 'src/app/models/teacher';
 import { ClassService } from 'src/app/services/class.service';
 import { StudentService } from 'src/app/services/student.service';
 import { TeacherService } from 'src/app/services/teacher.service';
+import { AddClassComponent } from '../add-class/add-class.component';
+import { EnroleStudentComponent } from './enrole-student/enrole-student.component';
 
 @Component({
   selector: 'app-class-details',
@@ -25,6 +28,7 @@ export class ClassDetailsComponent implements OnInit {
   faLanguage = faLanguage
   faProf = faUserTie
   faStudent = faGraduationCap
+  faPlus = faPlus
 
   students?: Student[];
 
@@ -32,7 +36,7 @@ export class ClassDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private classService: ClassService,
-    private teacherService: TeacherService
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -54,6 +58,26 @@ export class ClassDetailsComponent implements OnInit {
     );
   }
 
+  openAddStudent(enterAnimationDuration: string, exitAnimationDuration: string) : void {
+    const dialogRef = this.dialog.open(EnroleStudentComponent, {
+      // height: '500px',
+      width: '700px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        classId: this.classroom.id
+      },
+    });
 
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
+      if (result) {
+        this.classService.addStudentToClass(result.classId, result.studentId).subscribe(res => {
+          console.log("Student added to class")
+          this.getClassDetails(this.classroom.id);
+        })
+      }
+    });
+  }
   
 }

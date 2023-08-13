@@ -49,7 +49,7 @@ export class ClassService {
   }
 
   getStudentsNotInClass(classId: number): Observable<Student[]> {
-    return this.http.get<Student[]>(`${this.apiUrl}/${classId}/students`)
+    return this.http.get<Student[]>(`${this.apiUrl}/${classId}/non-enrolled-students`)
       .pipe(
         catchError((error: any) => {
           console.error('An error occurred:', error);
@@ -57,4 +57,10 @@ export class ClassService {
         })
       )
   }
+
+  addStudentToClass(classId: number, studentId: number) {
+    return this.http.post(`${this.apiUrl}/${classId}/students/${studentId}`, {})
+  }
+
+
 }
