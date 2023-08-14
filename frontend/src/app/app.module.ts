@@ -22,6 +22,8 @@ import { AddClassComponent } from './pages/classroom/add-class/add-class.compone
 import { ClassDetailsComponent } from './pages/classroom/class-details/class-details.component';
 import { EnroleStudentComponent } from './pages/classroom/class-details/enrole-student/enrole-student.component';
 import { AddPaymentModalComponent } from './pages/student/add-payment-modal/add-payment-modal.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ParametersComponent } from './pages/parameters/parameters.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { AddPaymentModalComponent } from './pages/student/add-payment-modal/add-
     AddClassComponent,
     ClassDetailsComponent,
     EnroleStudentComponent,
-    AddPaymentModalComponent
+    AddPaymentModalComponent,
+    DashboardComponent,
+    ParametersComponent
   ],
   imports: [
     BrowserModule,

@@ -6,8 +6,12 @@ import { TeacherComponent } from './pages/teacher/teacher.component';
 import { StudentDetailsComponent } from './pages/student/student-details/student-details.component';
 import { TeacherDetailsComponent } from './pages/teacher/teacher-details/teacher-details.component';
 import { ClassDetailsComponent } from './pages/classroom/class-details/class-details.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ParametersComponent } from './pages/parameters/parameters.component';
 
 const routes: Routes = [
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'parameters', component: ParametersComponent},
   {path: 'student', component: StudentComponent},
   { path: 'student-details/:id', component: StudentDetailsComponent },
   {path: 'teacher', component: TeacherComponent},
