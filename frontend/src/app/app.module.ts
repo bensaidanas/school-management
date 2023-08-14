@@ -24,6 +24,7 @@ import { EnroleStudentComponent } from './pages/classroom/class-details/enrole-s
 import { AddPaymentModalComponent } from './pages/student/add-payment-modal/add-payment-modal.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ParametersComponent } from './pages/parameters/parameters.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ParametersComponent } from './pages/parameters/parameters.component';
     EnroleStudentComponent,
     AddPaymentModalComponent,
     DashboardComponent,
-    ParametersComponent
+    ParametersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

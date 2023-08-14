@@ -8,8 +8,10 @@ import { TeacherDetailsComponent } from './pages/teacher/teacher-details/teacher
 import { ClassDetailsComponent } from './pages/classroom/class-details/class-details.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ParametersComponent } from './pages/parameters/parameters.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
+  {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'parameters', component: ParametersComponent},
   {path: 'student', component: StudentComponent},
