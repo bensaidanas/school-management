@@ -16,4 +16,10 @@ export class StudentPaymentService {
     return this.http.get<StudentPayment[]>(`${this.apiUrl}/students/${studentId}`)
   }
 
+
+  addPaymentForStudent(studentId: number, data: any) {
+    console.log(data)
+    return this.http.post(`${this.apiUrl}/students/${studentId}`, data)
+  }
+
 }

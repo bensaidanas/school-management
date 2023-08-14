@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Student } from '../models/student';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Classroom } from '../models/classroom';
 
 
 @Injectable({
@@ -56,6 +57,10 @@ export class StudentService {
           return throwError('Failed to update student information. Please try again later.');
         })
       );
+  }
+
+  getStudentClasses(studentId: number): Observable<Classroom[]> {
+    return this.http.get<Classroom[]>(`${this.apiUrl}/${studentId}/classes`)
   }
 
 }

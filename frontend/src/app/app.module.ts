@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddClassComponent } from './pages/classroom/add-class/add-class.component';
 import { ClassDetailsComponent } from './pages/classroom/class-details/class-details.component';
 import { EnroleStudentComponent } from './pages/classroom/class-details/enrole-student/enrole-student.component';
+import { AddPaymentModalComponent } from './pages/student/add-payment-modal/add-payment-modal.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EnroleStudentComponent } from './pages/classroom/class-details/enrole-s
     AddTeacherComponent,
     AddClassComponent,
     ClassDetailsComponent,
-    EnroleStudentComponent
+    EnroleStudentComponent,
+    AddPaymentModalComponent
   ],
   imports: [
     BrowserModule,
