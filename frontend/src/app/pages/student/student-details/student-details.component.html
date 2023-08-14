@@ -1,22 +1,41 @@
 <div *ngIf="student">
-    <div class="flex justify-between items-center w-full">
-        <a routerLink='/student' class="py-2 px-3 w-fit rounded-lg hover:scale-105 transition-all duration-300 bg-lime-500">
-            <fa-icon [icon]="faGithub" class="text-3xl text-white" ></fa-icon>
+    <div class="flex justify-between items-center w-[82vw] fixed top-0 right-0 px-4 py-3 bg-neutral-100">
+        <a routerLink='/student' class="py-2 px-3 w-fit rounded-full hover:bg-neutral-300 transition-all duration-300">
+            <fa-icon [icon]="faGithub" class="text-2xl" ></fa-icon>
         </a>
-        <div class="py-2 pl-2 pr-1 flex justify-center items-center w-fit rounded-full  cursor-pointer hover:bg-gray-200">
-            <fa-icon [icon]="faEdit" class="text-3xl text-lime-500"></fa-icon>
+        <h2 class="text-5xl text-center font-semibold ">{{ student.firstName }} {{ student.lastName }}</h2>
+        <div class="py-2 px-3 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:bg-neutral-300">
+            <fa-icon [icon]="faEdit" class="text-2xl"></fa-icon>
         </div>
     </div>
-    <div class="p-4 bg-white rounded-lg shadow-md">
-        <div class="h-[40vh] ">
-            <h2 class="text-5xl text-center font-semibold ">{{ student.firstName }} {{ student.lastName }}</h2>
-            <p class="text-lg "><span class="font-bold">Grad:</span> {{ student.grade.name }}</p>
-            <p *ngIf="student.major.id !== 1" class="text-lg "><span class="font-bold">Major:</span> {{ student.major.name }}</p>
-            <p class="text-lg "><span class="font-bold">Email:</span> {{ student.email }}</p>
-            <p class="text-lg "><span class="font-bold">Phone:</span> {{ student.phoneNumber }}</p>
+    <div class="mt-14">
+        <div class="flex gap-5">
+            <div class="flex flex-col gap-2 bg-neutral-200 px-4 py-3 rounded-xl w-[50%]">
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Niveau:</p> 
+                    <p>{{student.grade.name}}</p>
+                </div>
+                <div *ngIf="student.major.id !== 1" class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Filière:</p> 
+                    <p>{{student.major.name}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Email:</p> 
+                    <p>{{student.email}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Numéro de téléphone:</p> 
+                    <p>{{student.phoneNumber}}</p>
+                </div>
+            </div>
         </div>
-        
-        <h3 class="mt-8 mb-2 text-xl font-bold">Payment Records</h3>
+        <div class="flex justify-between items-center my-3 w-full bg-neutral-100 text-xl rounded-lg  px-4 py-2 ">
+            <h3 class="text-3xl text-violet-600 font-bold">Relevé de paiement</h3>
+            <div class="flex items-center font-semibold  gap-2 px-2 py-1 text-xl hover:scale-105 cursor-pointer text-black hover:bg-neutral-300 duration-300 transition-all rounded-lg">
+                <i class="pi pi-plus "></i>
+                <button class="   ">Nouveau Payement</button>
+            </div>
+        </div>
 
         <table mat-table [dataSource]="paymentRecords" class="mat-elevation-z8">
             <ng-container matColumnDef="Class Name">
@@ -45,5 +64,4 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-    </div>
 </div>

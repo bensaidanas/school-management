@@ -1,7 +1,5 @@
 <div *ngIf="students" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div [class.border-blue]="student.grade.id === 1"
-    [class.border-yellow]="student.grade.id === 2"
-    [class.border-green]="student.grade.id === 3"
+    <div 
     *ngFor="let student of students" class="bg-gray-200   hover:scale-105 cursor-pointer duration-300 transition-all rounded-lg shadow-md relative p-4 flex justify-end items-center">
         <a class="w-full h-16 flex justify-end items-start relative" [routerLink]="['/student-details', student.id]">
             <div class="mr-4">
@@ -16,8 +14,13 @@
             </div>
         </a>
     </div>
+    <div class="fixed w-[40%] bottom-0 -z-10 opacity-90 right-0">
+        <img src="../../../assets/images/student.png" alt="">
+    </div>
 </div>
-<div (click)="openAddStudentModal('750ms', '375ms')" class="absolute hover:scale-105 shadow-xl hover:bg-lime-500 cursor-pointer duration-300 transition-all  bottom-10 right-10 w-14 h-14 flex items-center justify-center rounded-full bg-lime-600">
-    <i class="pi pi-user-plus text-xl text-white"></i>
+
+<div (click)="openAddStudentModal('750ms', '375ms')" class="absolute hover:scale-110 shadow-xl  cursor-pointer duration-300 transition-all  bottom-10 right-10 w-14 h-14 flex items-center justify-center rounded-full bg-black">
+    <i class="pi pi-plus text-xl text-white"></i>
 </div>
+
 

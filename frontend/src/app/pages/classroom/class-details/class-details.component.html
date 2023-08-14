@@ -1,11 +1,11 @@
 <div *ngIf="classroom">
     <div class="flex justify-between items-center w-[82vw] fixed top-0 right-0 px-4 py-3 bg-neutral-100">
-        <a routerLink='/class' class="py-2 px-3 w-fit rounded-lg hover:scale-105 transition-all duration-300 bg-lime-500">
-            <fa-icon [icon]="faGithub" class="text-3xl text-white" ></fa-icon>
+        <a routerLink='/class' class="py-2 px-3 w-fit rounded-full hover:bg-neutral-300 transition-all duration-300">
+            <fa-icon [icon]="faGithub" class="text-2xl" ></fa-icon>
         </a>
         <h2 class="text-5xl text-center font-semibold ">{{ classroom.name }}</h2>
-        <div class="py-2 px-3 flex justify-center items-center w-fit rounded-full  cursor-pointer hover:bg-gray-200">
-            <fa-icon [icon]="faEdit" class="text-3xl text-lime-500"></fa-icon>
+        <div class="py-2 px-3 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:bg-neutral-300">
+            <fa-icon [icon]="faEdit" class="text-2xl"></fa-icon>
         </div>
     </div>
     <div class="mt-14">
@@ -35,7 +35,6 @@
                 </div>
 
                 <fa-icon *ngIf="classroom.teacher.subject.name === 'Math'" [icon]="faMath" class=" text-blue-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
-                <fa-icon *ngIf="classroom.teacher.subject.name === 'SVT'" [icon]="faSvt" class=" text-green-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
                 <fa-icon *ngIf="classroom.teacher.subject.name === 'French' || classroom.teacher.subject.name === 'English'" [icon]="faLanguage" class="text-sky-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
             </div>
         </div>
@@ -62,4 +61,7 @@
         </div>
         
     </div>
+</div>
+<div class="fixed w-[40%]  -bottom-16 -z-10  -right-12">
+    <img *ngIf="classroom.teacher.subject.name === 'SVT'" src="../../../../assets/images/svt.png" alt="">
 </div>
