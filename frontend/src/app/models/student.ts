@@ -1,8 +1,8 @@
 // student.model.ts
 
+import { Classroom } from "./classroom";
 import { Grade } from "./grade";
 import { Major } from "./major";
-import { PaymentRecord } from "./payment-record";
 
 export interface Student {
     id?: number;
@@ -12,5 +12,5 @@ export interface Student {
     phoneNumber: string;
     grade: Grade;
     major: Major;
-    classrooms?: PaymentRecord[]; // An array of PaymentRecord objects representing the classrooms the student belongs to
+    classrooms?: Classroom[]; // An array of PaymentRecord objects representing the classrooms the student belongs to
 }

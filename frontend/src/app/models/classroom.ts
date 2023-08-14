@@ -1,7 +1,6 @@
 // classroom.model.ts
 
 import { Teacher } from "./teacher";
-import { PaymentRecord } from "./payment-record";
 import { Grade } from "./grade";
 import { Student } from "./student";
 

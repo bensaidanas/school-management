@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { Student } from '../models/student';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { PaymentRecord } from '../models/payment-record';
-import { Classroom } from '../models/classroom';
-import { Grade } from '../models/grade';
-import { Major } from '../models/major';
+
 
 @Injectable({
   providedIn: 'root'
@@ -61,51 +58,4 @@ export class StudentService {
       );
   }
 
-   // Get all payment records of a student by student ID
-    getPaymentRecordsByStudentId(studentId: number): Observable<PaymentRecord[]> {
-      const url = `http://localhost:3000/paymentRecords?studentId=${studentId}`;
-      return this.http.get<PaymentRecord[]>(url)
-        .pipe(
-          catchError((error: any) => {
-            console.error('An error occurred:', error);
-            return throwError('Failed to fetch payment records. Please try again later.');
-          })
-        );
-    }
-
-    // Toggle the isPaid property of a payment record
-    togglePaymentStatus(paymentRecord: PaymentRecord): Observable<PaymentRecord> {
-      const url = `http://localhost:3000/paymentRecords/${paymentRecord.id}`;
-      return this.http.patch<PaymentRecord>(url, { isPaid: !paymentRecord.isPaid })
-        .pipe(
-          catchError((error: any) => {
-            console.error('An error occurred:', error);
-            return throwError('Failed to toggle payment status. Please try again later.');
-          })
-        );
-    }
-
-     // Get a single class by ID
-  getClassById(classId: number): Observable<Classroom> {
-    const url = `http://localhost:3000/classrooms/${classId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
-    return this.http.get<Classroom>(url)
-      .pipe(
-        catchError((error: any) => {
-          console.error('An error occurred:', error);
-          return throwError('Failed to fetch class details. Please try again later.');
-        })
-      );
-  }
-
-  
-  getMajorById(majorId: number): Observable<Major> {
-    const url = `http://localhost:3000/majors/${majorId}`; // Replace 'api/classes' with the actual endpoint to retrieve class details
-    return this.http.get<Major>(url)
-      .pipe(
-        catchError((error: any) => {
-          console.error('An error occurred:', error);
-          return throwError('Failed to fetch class details. Please try again later.');
-        })
-      );
-  }
 }

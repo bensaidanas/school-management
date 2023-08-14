@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PaymentRecord } from 'src/app/models/payment-record';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 import { faArrowLeft, faUserPen } from '@fortawesome/free-solid-svg-icons'
 import { GradeService } from 'src/app/services/grade.service';
+import { StudentPayment } from 'src/app/models/studentPayment';
+import { StudentPaymentService } from 'src/app/services/student-payment.service';
 
 @Component({
   selector: 'app-student-details',
@@ -17,12 +18,12 @@ export class StudentDetailsComponent implements OnInit {
   faGithub = faArrowLeft
 
   student!: Student;
-  paymentRecords!: PaymentRecord[];
-  displayedColumns: string[] = ['Class Name', 'Month', 'Amount', 'Status']
+  paymentRecords!: StudentPayment[];
+  displayedColumns: string[] = ['Class Name', 'Month', 'Year', 'Amount', 'Status']
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
-    private gradeService: GradeService
+    private paymentService: StudentPaymentService
   ) {}
 
   ngOnInit() {
@@ -45,27 +46,10 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   getPaymentRecords(studentId: number) {
-    this.studentService.getPaymentRecordsByStudentId(studentId).subscribe(
-      paymentRecords => {
-        this.paymentRecords = paymentRecords;
-        this.populateClassNames(paymentRecords);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    this.paymentService.getPaymentsByStudent(studentId).subscribe((res) => {
+      this.paymentRecords = res
+    })
   }
 
-  populateClassNames(paymentRecords: PaymentRecord[]) {
-    for (const record of paymentRecords) {
-      this.studentService.getClassById(record.classId).subscribe(
-        classroom => {
-          record.className = classroom.name;
-        },
-        error => {
-          console.error(error);
-        }
-      );
-    }
-  }
+  
 }
