@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from 'primeng/dynamicdialog';
 import { Teacher } from 'src/app/models/teacher';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Subject } from 'src/app/models/subject';
 import { faUserTie, faSquareRootVariable, faMicroscope, faLanguage } from '@fortawesome/free-solid-svg-icons'
-
+import { faReact } from "@fortawesome/free-brands-svg-icons"
 
 @Component({
   selector: 'app-teacher',
@@ -18,6 +16,7 @@ export class TeacherComponent implements OnInit {
   faProf = faUserTie
   faMath = faSquareRootVariable
   faSvt = faMicroscope
+  faPc = faReact
   faLanguage = faLanguage
 
     constructor(

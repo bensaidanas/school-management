@@ -5,6 +5,8 @@ import { ClassService } from 'src/app/services/class.service';
 import { AddClassComponent } from './add-class/add-class.component';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { faLanguage, faSquareRootVariable, faMicroscope } from '@fortawesome/free-solid-svg-icons'
+import { faReact } from "@fortawesome/free-brands-svg-icons"
+
 
 
 @Component({
@@ -15,6 +17,7 @@ import { faLanguage, faSquareRootVariable, faMicroscope } from '@fortawesome/fre
 export class ClassroomComponent implements OnInit {
   faMath = faSquareRootVariable
   faSvt = faMicroscope
+  faPc = faReact
   faLanguage = faLanguage
   classrooms!: Classroom[];
 

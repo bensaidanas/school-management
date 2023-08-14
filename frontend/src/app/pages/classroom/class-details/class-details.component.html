@@ -34,7 +34,6 @@
                     <p>{{classroom.teacher.subject.name}}</p>
                 </div>
 
-                <fa-icon *ngIf="classroom.teacher.subject.name === 'Math'" [icon]="faMath" class=" text-blue-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
                 <fa-icon *ngIf="classroom.teacher.subject.name === 'French' || classroom.teacher.subject.name === 'English'" [icon]="faLanguage" class="text-sky-600 text-8xl absolute bottom-1 right-2" ></fa-icon>
             </div>
         </div>
@@ -64,4 +63,10 @@
 </div>
 <div class="fixed w-[40%]  -bottom-16 -z-10  -right-12">
     <img *ngIf="classroom.teacher.subject.name === 'SVT'" src="../../../../assets/images/svt.png" alt="">
+</div>
+<div class="fixed w-[40%]  -bottom-16 -z-10  -right-12">
+    <img *ngIf="classroom.teacher.subject.name === 'Math'" src="../../../../assets/images/math.png" alt="">
+</div>
+<div class="fixed w-[40%]  -bottom-16 -z-10  -right-12">
+    <img *ngIf="classroom.teacher.subject.name === 'PC'" src="../../../../assets/images/pc.png" alt="">
 </div>

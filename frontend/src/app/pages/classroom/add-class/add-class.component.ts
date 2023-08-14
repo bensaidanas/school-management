@@ -30,6 +30,7 @@ export class AddClassComponent {
       sessionsNumber: ['', Validators.required],
       grade: [null, Validators.required],
       teacher: [null, Validators.required],
+      price: [null, Validators.required],
     });
   }
 
@@ -47,6 +48,7 @@ export class AddClassComponent {
       this.data.grade = formValues.grade;
       this.data.teacher = formValues.teacher;
       this.data.sessionNumber = formValues.sessionsNumber;
+      this.data.price = formValues.price;
 
       this.dialogRef.close(this.data);
     }

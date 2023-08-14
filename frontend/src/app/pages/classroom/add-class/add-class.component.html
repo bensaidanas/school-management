@@ -1,16 +1,16 @@
 <div class="flex flex-col  justify-between h-full">
     <div>
-        <h1 mat-dialog-title>New Class</h1>
+        <h1 mat-dialog-title>Nouveau Cours</h1>
         <div mat-dialog-content>
             <!-- <p></p> -->
             <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
                 <div class="grid grid-cols-2 w-full gap-2">
                     <mat-form-field class="w-full">
-                        <mat-label>Class Name</mat-label>
+                        <mat-label>Nom</mat-label>
                         <input matInput formControlName="className" required>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Class Grade</mat-label>
+                        <mat-label>Niveau du Cours</mat-label>
                         <mat-select [(ngModel)]="data.grade" formControlName="grade" required>
                             <mat-option *ngFor="let grade of grades" [value]="grade">
                                 {{grade.name}}
@@ -20,23 +20,27 @@
                         <mat-hint></mat-hint>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Teacher</mat-label>
+                        <mat-label>Professeur</mat-label>
                         <mat-select [(ngModel)]="data.teacher" formControlName="teacher" required>
                             <mat-option *ngFor="let teacher of teachers" [value]="teacher">
-                                {{teacher.firstName}} {{teacher.lastName}}
+                                {{teacher.firstName}} {{teacher.lastName}} - {{teacher.subject.name}}
                             </mat-option>
                         </mat-select>
                         <!-- <mat-error *ngIf="gradeControl.hasError('required')">Please choose a grade</mat-error> -->
                         <mat-hint></mat-hint>
                     </mat-form-field>
                     <mat-form-field class="w-full">
-                        <mat-label>Sessions Number</mat-label>
+                        <mat-label>Nombre de Sessions par Mois</mat-label>
                         <input matInput formControlName="sessionsNumber" required>
+                    </mat-form-field>
+                    <mat-form-field class="w-full">
+                        <mat-label>Prix</mat-label>
+                        <input matInput formControlName="price" required>
                     </mat-form-field>
                 </div>
                 <div class="flex justify-between items-center w-full gap-2">
                     <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Cancel</button>
-                    <button  type="submit" cdkFocusInitial  class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-lime-500 font-bold hover:bg-lime-400 text-white">Submit</button>
+                    <button  type="submit"  class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-violet-500 font-bold hover:bg-violet-400 text-white">Submit</button>
                 </div>
             </form>
         </div>

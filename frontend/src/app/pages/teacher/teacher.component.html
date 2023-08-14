@@ -1,26 +1,27 @@
 <div *ngIf="teachers" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div *ngFor="let teacher of teachers" class="bg-gray-200  hover:scale-105 cursor-pointer duration-300 transition-all rounded-lg shadow-md relative p-4 flex justify-end items-center">
+    <div *ngFor="let teacher of teachers" class="bg-gray-200 overflow-hidden  hover:scale-105 cursor-pointer duration-300 transition-all rounded-lg shadow-md relative p-4 flex justify-end items-center">
         <a class="w-full  flex h-16 justify-end items-start" [routerLink]="['/teacher-details', teacher.id]">
             <div class="mr-4">
                 <!-- <i class="pi pi-user opacity-50 text-8xl absolute -bottom-1 left-0"></i> -->
-                <fa-icon [icon]="faProf" class="opacity-50 text-8xl absolute -bottom-1 left-0" ></fa-icon>
+                <fa-icon [icon]="faProf" class="opacity-20 text-[5rem] absolute -bottom-6 left-0" ></fa-icon>
             </div>
-            <div class="w-[65%]">
+            <div class="w-[80%]">
                 <h3 class="text-lg font-semibold">{{ teacher.firstName }} {{ teacher.lastName }}</h3>
                 <p class="text-sm text-gray-600">{{ teacher.subject.name }}</p>
             </div>
-            <fa-icon *ngIf="teacher.subject.name === 'Math'" [icon]="faMath" class=" text-blue-600 text-6xl absolute -bottom-1 right-15" ></fa-icon>
-            <fa-icon *ngIf="teacher.subject.name === 'SVT'" [icon]="faSvt" class=" text-green-600 text-6xl absolute -bottom-1 right-15" ></fa-icon>
+            <fa-icon *ngIf="teacher.subject.name === 'Math'" [icon]="faMath" class=" text-sky-400 text-8xl absolute -bottom-2 right-0" ></fa-icon>
+            <fa-icon *ngIf="teacher.subject.name === 'SVT'" [icon]="faSvt" class=" text-green-400 text-8xl absolute -bottom-2 right-0" ></fa-icon>
+            <fa-icon *ngIf="teacher.subject.name === 'PC'" [icon]="faPc" class=" text-red-500 text-8xl absolute -bottom-1 right-0" ></fa-icon>
             <fa-icon *ngIf="teacher.subject.name === 'French' || teacher.subject.name === 'English'" [icon]="faLanguage" class="text-sky-600 text-6xl absolute -bottom-1 right-15" ></fa-icon>
 
         </a>
     </div>
 </div>
 
-<div (click)="openModal('750ms', '375ms')" class="absolute hover:scale-105 hover:bg-lime-500 cursor-pointer duration-300 transition-all  bottom-10 right-10 w-14 h-14 flex items-center justify-center rounded-full bg-lime-600">
-    <i class="pi pi-user-plus text-xl text-white"></i>
+<div (click)="openModal('750ms', '375ms')" class="absolute hover:scale-110 shadow-xl  cursor-pointer duration-300 transition-all  bottom-10 right-10 w-14 h-14 flex items-center justify-center rounded-full bg-black">
+    <i class="pi pi-plus text-xl text-white"></i>
 </div>
 
-<div class="fixed w-[30%] bottom-0 -z-10 opacity-80 right-0">
+<div class="fixed w-[40%] bottom-0 -z-10  right-0">
     <img src="../../../assets/images/teacher.png" alt="">
 </div>
