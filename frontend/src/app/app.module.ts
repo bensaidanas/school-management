@@ -25,6 +25,7 @@ import { AddPaymentModalComponent } from './pages/student/add-payment-modal/add-
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ParametersComponent } from './pages/parameters/parameters.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AddTeacherPaymentComponent } from './pages/teacher/teacher-details/add-teacher-payment/add-teacher-payment.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { LoginComponent } from './pages/login/login.component';
     AddPaymentModalComponent,
     DashboardComponent,
     ParametersComponent,
-    LoginComponent
+    LoginComponent,
+    AddTeacherPaymentComponent
   ],
   imports: [
     BrowserModule,

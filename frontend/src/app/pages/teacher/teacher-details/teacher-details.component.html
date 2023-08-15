@@ -1,58 +1,80 @@
 <div *ngIf="teacher">
-    <div class="p-4 bg-white rounded-lg shadow-md">
-        <div class="h-[40vh] ">
-            <h2 class="text-5xl text-center font-semibold ">{{ teacher.firstName }} {{ teacher.lastName }}</h2>
-            <p class="text-lg "><span class="font-bold">Subject:</span> {{ teacher.subject.name }}</p>
-            <p class="text-lg "><span class="font-bold">Charge by session:</span> {{ teacher.salaryBySession }} MAD</p>
-            <p class="text-lg "><span class="font-bold">Email:</span> {{ teacher.email }}</p>
-            <p class="text-lg "><span class="font-bold">Phone:</span> {{ teacher.phoneNumber }}</p>
+    <div class="flex justify-between items-center w-[82vw] fixed top-0 right-0 px-4 py-3 bg-neutral-100">
+        <a routerLink='/student' class="py-2 px-3 w-fit rounded-full hover:bg-neutral-300 transition-all duration-300">
+            <fa-icon [icon]="faGithub" class="text-2xl" ></fa-icon>
+        </a>
+        <h2 class="text-5xl text-center font-semibold ">{{ teacher.firstName }} {{ teacher.lastName }}</h2>
+        <div class="py-2 px-3 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:bg-neutral-300">
+            <fa-icon [icon]="faEdit" class="text-2xl"></fa-icon>
         </div>
-        
-        <h3 class="mt-8 mb-2 text-xl font-bold">Payments</h3>
+    </div>
+    <div class="mt-14">
+        <div class="flex gap-5">
+            <div class="flex flex-col gap-2 bg-neutral-200 px-4 py-3 rounded-xl w-[50%]">
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Email:</p> 
+                    <p>{{teacher.email}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Professeur de:</p> 
+                    <p>{{teacher.subject.name}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Numéro de téléphone:</p> 
+                    <p>{{teacher.phoneNumber}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Adresse:</p> 
+                    <p>{{teacher.address}}</p>
+                </div>
+                <div class="text-xl flex gap-3  w-fit">
+                    <p class="font-bold">Salaire Par Session:</p> 
+                    <p>{{teacher.salaryBySession}} MAD</p>
+                </div>
+            </div>
+            <!-- <div class="w-[50%] h-[100%]  bg-neutral-200 py-3 px-4 rounded-xl">
+                
+            </div> -->
+        </div>
+        <div class="flex justify-between items-center my-3 w-full bg-neutral-100 text-xl rounded-lg  px-4 py-2 ">
+            <h3 class="text-3xl text-violet-600 font-bold">Relevé de paiement</h3>
+            <div (click)="openAddPayment('750ms', '375ms')" class="flex items-center font-semibold  gap-2 px-2 py-1 text-xl hover:scale-105 cursor-pointer text-black hover:bg-neutral-300 duration-300 transition-all rounded-lg">
+                <i class="pi pi-plus "></i>
+                <button class="   ">Nouveau Payement</button>
+            </div>
+        </div>
+
         <table mat-table [dataSource]="payments" class="mat-elevation-z8">
             <ng-container matColumnDef="Class Name">
-                <th mat-header-cell *matHeaderCellDef> Class Name </th>
-                <td mat-cell *matCellDef="let element"> {{ element.className }} </td>
+                <th mat-header-cell *matHeaderCellDef> Cours </th>
+                <td mat-cell *matCellDef="let element"> {{ element.classroom.name }} </td>
             </ng-container>
             
             <!-- Name Column -->
             <ng-container matColumnDef="Month">
-                <th mat-header-cell *matHeaderCellDef> Month </th>
+                <th mat-header-cell *matHeaderCellDef> Mois </th>
                 <td mat-cell *matCellDef="let element"> {{ element.month }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Year">
+                <th mat-header-cell *matHeaderCellDef> Année </th>
+                <td mat-cell *matCellDef="let element"> {{ element.year }} </td>
             </ng-container>
             
             <!-- Weight Column -->
             <ng-container matColumnDef="Amount">
-                <th mat-header-cell *matHeaderCellDef> Amount </th>
-                <td mat-cell *matCellDef="let element"> {{ element.amount }} </td>
+                <th mat-header-cell *matHeaderCellDef> Montant </th>
+                <td mat-cell *matCellDef="let element"> {{ element.amount }} MAD</td>
             </ng-container>
             
             <!-- Symbol Column -->
             <ng-container matColumnDef="Status">
-                <th mat-header-cell *matHeaderCellDef> Status </th>
-                <td mat-cell *matCellDef="let element"> {{ element.isPaid ? 'Paid' : 'Not Paid' }} </td>
+                <th mat-header-cell *matHeaderCellDef> Statut </th>
+                <td mat-cell *matCellDef="let element"> {{ element.paid ? 'Payé' : 'Non payé' }} </td>
             </ng-container>
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <!-- <p-table [value]="payments">
-            <ng-template pTemplate="header">
-                <tr>
-                <th>Class Name</th>
-                <th>Month</th>
-                <th>Amount</th>
-                <th>Status</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-paymentRecord>
-                <tr>
-                    <td>{{ paymentRecord.className }}</td>
-                    <td>{{ paymentRecord.month }}</td>
-                    <td>{{ paymentRecord.amount }}</td>
-                    <td>{{ paymentRecord.isPaid ? 'Paid' : 'Not Paid' }}</td>
-                </tr>
-            </ng-template>
-        </p-table> -->
     </div>
 </div>
