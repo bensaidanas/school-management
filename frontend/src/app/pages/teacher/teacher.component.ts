@@ -5,6 +5,7 @@ import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { MatDialog } from '@angular/material/dialog';
 import { faUserTie, faSquareRootVariable, faMicroscope, faLanguage } from '@fortawesome/free-solid-svg-icons'
 import { faReact } from "@fortawesome/free-brands-svg-icons"
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-teacher',
@@ -27,6 +28,18 @@ export class TeacherComponent implements OnInit {
   ngOnInit() {
     this.getAllTeachers();
   }
+
+  toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   getAllTeachers() {
     this.teacherService.getAllTeachers().subscribe(
@@ -56,8 +69,33 @@ export class TeacherComponent implements OnInit {
       if (result) {
         this.teacherService.addTeacher(result).subscribe(res => {
           this.getAllTeachers();
+          this.toast.fire({
+            icon: 'success',
+            title: 'Ajouter avec succee'
+          })
         })
       }
     });
+  }
+
+  delete(event: Event, id: number): void {
+    event.stopPropagation();
+    Swal.fire({
+      title: "Delete a teacher",
+      icon: "question",
+      showCancelButton: true,
+      // showCloseButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      confirmButtonColor: "#7c3aed",
+      reverseButtons: true
+    }).then((res) => {
+      if (res.isConfirmed) {
+        this.toast.fire({
+          icon: "success",
+          title: "Suprimer avec succee"
+        })
+      }
+    })
   }
 }
