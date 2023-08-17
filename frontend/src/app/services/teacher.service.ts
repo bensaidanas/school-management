@@ -38,6 +38,16 @@ export class TeacherService {
       );
   }
 
+  deleteTeacher(teacherId: number) {
+    return this.http.get(`${this.apiUrl}/delete/${teacherId}`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to delete teacher. Please try again later.');
+        })
+      );
+  }
+
   // Add a new teacher
   addTeacher(teacher: Partial<Teacher>): Observable<Teacher> {
     return this.http.post<Teacher>(this.apiUrl, teacher)

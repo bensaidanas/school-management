@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Payment } from 'src/app/models/payment';
 import { Teacher } from 'src/app/models/teacher';
@@ -27,7 +27,8 @@ export class TeacherDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private teacherService: TeacherService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -94,9 +95,9 @@ export class TeacherDetailsComponent implements OnInit {
     }
   })
 
-  delete(id: number): void {
+  delete(teacher: Teacher): void {
     Swal.fire({
-      title: "Delete a teacher",
+      title: `Êtes-vous sûr(e) de vouloir supprimer le/la professeur ${teacher.firstName} ${teacher.lastName}?`,
       icon: "question",
       showCancelButton: true,
       // showCloseButton: true,
@@ -106,9 +107,12 @@ export class TeacherDetailsComponent implements OnInit {
       reverseButtons: true
     }).then((res) => {
       if (res.isConfirmed) {
-        this.toast.fire({
-          icon: "success",
-          title: "Suprimer avec succee"
+        this.teacherService.deleteTeacher(teacher.id).subscribe(() => {
+          this.router.navigate(['/teacher']);
+          this.toast.fire({
+            icon: "success",
+            title: "Supprimé avec succès"
+          })
         })
       }
     })
