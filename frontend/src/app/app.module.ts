@@ -26,6 +26,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ParametersComponent } from './pages/parameters/parameters.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddTeacherPaymentComponent } from './pages/teacher/teacher-details/add-teacher-payment/add-teacher-payment.component';
+import { TeacherEditComponent } from './pages/teacher/teacher-details/teacher-edit/teacher-edit.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AddTeacherPaymentComponent } from './pages/teacher/teacher-details/add-
     DashboardComponent,
     ParametersComponent,
     LoginComponent,
-    AddTeacherPaymentComponent
+    AddTeacherPaymentComponent,
+    TeacherEditComponent
   ],
   imports: [
     BrowserModule,

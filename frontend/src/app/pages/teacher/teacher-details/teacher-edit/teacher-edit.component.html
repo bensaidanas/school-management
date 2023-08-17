@@ -1,0 +1,53 @@
+
+<div class="flex flex-col  justify-between h-full">
+    <div>
+        <h1 mat-dialog-title>Edit Professeur</h1>
+        <div mat-dialog-content>
+            <!-- <p></p> -->
+                <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
+                    <div class="grid grid-cols-2 w-full gap-2">
+                        <mat-form-field class="w-full">
+                            <mat-label>Prénom</mat-label>
+                            <input [(ngModel)]="data.teacher.firstName" matInput formControlName="firstName" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Nom de Famille</mat-label>
+                            <input [(ngModel)]="data.teacher.lastName" matInput formControlName="lastName" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Adresse e-mail</mat-label>
+                            <input [(ngModel)]="data.teacher.email" matInput placeholder="nadir@example.com" formControlName="email"  required>
+                            <mat-error></mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Numéro de téléphone</mat-label>
+                            <input [(ngModel)]="data.teacher.phoneNumber" matInput formControlName="phoneNumber">
+                        </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Adresse</mat-label>
+                            <input [(ngModel)]="data.teacher.address" matInput formControlName="address">
+                        </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Salaire Par Session</mat-label>
+                            <input [(ngModel)]="data.teacher.salaryBySession" type="number" matInput formControlName="salaryBySession">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Matier</mat-label>
+                            <mat-select formControlName="subject" [compareWith]="compareSubjects" required>
+                                <mat-option *ngFor="let subject of subjects" [value]="subject">
+                                    {{ subject.name }}
+                                </mat-option>
+                          </mat-select>
+                            <!-- <mat-error *ngIf="gradeControl.hasError('required')">Please choose a grade</mat-error> -->
+                            <mat-hint></mat-hint>
+                        </mat-form-field>
+                    </div>
+                    
+                <div class="flex justify-between items-center w-full gap-2">
+                    <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Annuler</button>
+                    <button  type="submit"   class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-violet-500 font-bold hover:bg-violet-400 text-white">Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>

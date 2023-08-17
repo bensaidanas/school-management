@@ -4,7 +4,7 @@
             <fa-icon [icon]="faGithub" class="text-2xl" ></fa-icon>
         </a>
         <h2 class="text-5xl text-center font-semibold ">{{ teacher.firstName }} {{ teacher.lastName }}</h2>
-        <div class="py-2 px-3 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:bg-neutral-300">
+        <div (click)="openEdit('750ms', '375ms')" class="py-2 px-3 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:bg-neutral-300">
             <fa-icon [icon]="faEdit" class="text-2xl"></fa-icon>
         </div>
     </div>
