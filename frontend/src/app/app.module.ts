@@ -28,6 +28,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AddTeacherPaymentComponent } from './pages/teacher/teacher-details/add-teacher-payment/add-teacher-payment.component';
 import { TeacherEditComponent } from './pages/teacher/teacher-details/teacher-edit/teacher-edit.component';
 import { StudentEditComponent } from './pages/student/student-edit/student-edit.component';
+import { ClassEditComponent } from './pages/classroom/class-details/class-edit/class-edit.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { StudentEditComponent } from './pages/student/student-edit/student-edit.
     LoginComponent,
     AddTeacherPaymentComponent,
     TeacherEditComponent,
-    StudentEditComponent
+    StudentEditComponent,
+    ClassEditComponent
   ],
   imports: [
     BrowserModule,

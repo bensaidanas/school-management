@@ -66,5 +66,20 @@ export class ClassService {
     return this.http.post(`${this.apiUrl}/${classId}/students/${studentId}`, {})
   }
 
+  deleteClass(classId: number) {
+    return this.http.delete(`${this.apiUrl}/${classId}`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          throw error;
+        })
+      );
+  }
+
+  unenrollStudentFromClass(classroomId: number, studentId: number): Observable<any> {
+    const url = `${this.apiUrl}/${classroomId}/students/${studentId}`;
+    return this.http.delete(url);
+  }
+
 
 }

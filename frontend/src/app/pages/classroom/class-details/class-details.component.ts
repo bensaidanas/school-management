@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { faArrowLeft, faPlus, faPenToSquare, faSquareRootVariable, faMicroscope, faLanguage, faUserTie, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import { ActivatedRoute, Router } from '@angular/router';
+import { faArrowLeft, faPlus, faPenToSquare, faSquareRootVariable, faMicroscope, faLanguage, faUserTie, faGraduationCap, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 
 import { Classroom } from 'src/app/models/classroom';
-import { Grade } from 'src/app/models/grade';
 import { Student } from 'src/app/models/student';
-import { Subject } from 'src/app/models/subject';
-import { Teacher } from 'src/app/models/teacher';
 import { ClassService } from 'src/app/services/class.service';
-import { StudentService } from 'src/app/services/student.service';
-import { TeacherService } from 'src/app/services/teacher.service';
-import { AddClassComponent } from '../add-class/add-class.component';
 import { EnroleStudentComponent } from './enrole-student/enrole-student.component';
+import { ClassEditComponent } from './class-edit/class-edit.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-class-details',
@@ -29,6 +25,7 @@ export class ClassDetailsComponent implements OnInit {
   faProf = faUserTie
   faStudent = faGraduationCap
   faPlus = faPlus
+  faDelete = faTrashCan
 
   students?: Student[];
 
@@ -36,7 +33,8 @@ export class ClassDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private classService: ClassService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -81,9 +79,91 @@ export class ClassDetailsComponent implements OnInit {
         this.classService.addStudentToClass(result.classId, result.studentId).subscribe(res => {
           console.log("Student added to class")
           this.getClassDetails(this.classroom.id);
+          this.getStudentsInClass(this.classroom.id);
         })
       }
     });
+  }
+
+  openEdit(enterAnimationDuration: string, exitAnimationDuration: string) : void {
+    const dialogRef = this.dialog.open(ClassEditComponent, {
+      // height: '500px',
+      width: '700px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {classroom: this.classroom},
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
+      if (result) {
+        // this.classService.updateClass(result.student).subscribe(() => {
+        //   this.toast.fire({
+        //     icon: "success",
+        //     title: "Modifier avec succès"
+        //   })
+        // })
+      }
+    });
+  }
+
+  toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+  delete(classroom: Classroom): void {
+    Swal.fire({
+      title: `Are you sure you want to delete this class ${classroom.name}?`,
+      icon: "question",
+      showCancelButton: true,
+      // showCloseButton: true,
+      confirmButtonText: "Oui",
+      cancelButtonText: "Non",
+      confirmButtonColor: "#7c3aed",
+      reverseButtons: true
+    }).then((res) => {
+      if (res.isConfirmed) {
+        this.classService.deleteClass(classroom.id!).subscribe(() => {
+          this.router.navigate(['/class']);
+          this.toast.fire({
+            icon: "success",
+            title: "Supprimé avec succès"
+          })
+        })
+      }
+    })
+  }
+
+  unrollStudent(student: Student) {
+    Swal.fire({
+      title: `Are you sure you want to unroll this student ${student.firstName} ${student.lastName}?`,
+      icon: "question",
+      showCancelButton: true,
+      // showCloseButton: true,
+      confirmButtonText: "Oui",
+      cancelButtonText: "Non",
+      confirmButtonColor: "#7c3aed",
+      reverseButtons: true
+    }).then((res) => {
+      if (res.isConfirmed) {
+        this.classService.unenrollStudentFromClass(this.classroom.id, student.id!).subscribe(() => {
+          this.toast.fire({
+            icon: "success",
+            title: "Supprimé avec succès"
+          })
+          this.getClassDetails(this.classroom.id);
+          this.getStudentsInClass(this.classroom.id);
+        })
+      }
+    })
   }
   
 }
