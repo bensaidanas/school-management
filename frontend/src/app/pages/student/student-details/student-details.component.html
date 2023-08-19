@@ -1,11 +1,17 @@
 <div *ngIf="student">
     <div class="flex justify-between items-center w-[82vw] fixed top-0 right-0 px-4 py-3 bg-neutral-100">
+        
         <a routerLink='/student' class="py-2 px-3 w-fit rounded-full hover:bg-neutral-300 transition-all duration-300">
             <fa-icon [icon]="faGithub" class="text-2xl" ></fa-icon>
         </a>
         <h2 class="text-5xl text-center font-semibold ">{{ student.firstName }} {{ student.lastName }}</h2>
-        <div class="py-2 px-3 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:bg-neutral-300">
-            <fa-icon [icon]="faEdit" class="text-2xl"></fa-icon>
+        <div class="flex gap-2 w-fit">
+            <div (click)="openEdit('750ms', '375ms')" class="py-2 px-2 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:bg-neutral-300">
+                <fa-icon [icon]="faEdit" class="text-2xl ml-1"></fa-icon>
+            </div>
+            <div (click)="delete(student)" class="py-2 px-3 flex justify-center items-center w-fit rounded-full transition-all duration-300  cursor-pointer hover:text-white hover:bg-red-400">
+                <fa-icon [icon]="faDelete" class="text-2xl"></fa-icon>
+            </div>
         </div>
     </div>
     <div class="mt-14">

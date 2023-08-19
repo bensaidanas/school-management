@@ -23,4 +23,14 @@ export class MajorService {
         })
       );
   }
+
+  getAllMajors(): Observable<Major[]> {
+    return this.http.get<Major[]>(this.apiUrl)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch majors. Please try again later.');
+        })
+      );
+  }
 }

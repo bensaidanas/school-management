@@ -43,14 +43,20 @@ export class ClassDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const classId = +params.get('id')!;
       this.getClassDetails(classId);
+      this.getStudentsInClass(classId);
     });
+  }
+
+  getStudentsInClass(id: number) {
+    this.classService.getStudentsInClass(id).subscribe((res) => {
+      this.students = res
+    })
   }
 
   getClassDetails(classId: number) {
     this.classService.getClassById(classId).subscribe(
       classroom => {
         this.classroom = classroom;
-        this.students = this.classroom.students
       },
       error => {
         console.error(error);

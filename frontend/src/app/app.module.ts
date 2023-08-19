@@ -27,6 +27,7 @@ import { ParametersComponent } from './pages/parameters/parameters.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddTeacherPaymentComponent } from './pages/teacher/teacher-details/add-teacher-payment/add-teacher-payment.component';
 import { TeacherEditComponent } from './pages/teacher/teacher-details/teacher-edit/teacher-edit.component';
+import { StudentEditComponent } from './pages/student/student-edit/student-edit.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { TeacherEditComponent } from './pages/teacher/teacher-details/teacher-ed
     ParametersComponent,
     LoginComponent,
     AddTeacherPaymentComponent,
-    TeacherEditComponent
+    TeacherEditComponent,
+    StudentEditComponent
   ],
   imports: [
     BrowserModule,

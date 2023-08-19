@@ -22,4 +22,15 @@ export class GradeService {
         })
       );
   }
+
+
+  getAllGrades(): Observable<Grade[]> {
+    return this.http.get<Grade[]>(this.apiUrl)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to fetch grades. Please try again later.');
+        })
+      );
+  }
 }

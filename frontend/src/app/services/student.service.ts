@@ -59,6 +59,16 @@ export class StudentService {
       );
   }
 
+  deleteStudent(studentId: number) {
+    return this.http.delete(`${this.apiUrl}/${studentId}`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          throw error;
+        })
+      );
+  }
+
   getStudentClasses(studentId: number): Observable<Classroom[]> {
     return this.http.get<Classroom[]>(`${this.apiUrl}/${studentId}/classes`)
   }

@@ -37,6 +37,10 @@ export class ClassService {
       );
   }
 
+  getStudentsInClass(id: number): Observable<Student[]> {
+    return this.http.get<Student[]>(`${this.apiUrl}/${id}/students`)
+  }
+
   // Add a new student
   addClass(classroom: Partial<Classroom>): Observable<Classroom> {
     return this.http.post<Classroom>(this.apiUrl, classroom)
