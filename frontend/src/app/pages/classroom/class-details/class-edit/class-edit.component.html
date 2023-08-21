@@ -1,1 +1,40 @@
-<p>class-edit works!</p>
+
+<div class="flex flex-col  justify-between h-full">
+    <div>
+        <h1 mat-dialog-title>Edit Class</h1>
+        <div mat-dialog-content>
+            <!-- <p></p> -->
+                <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
+                    <div class="grid grid-cols-2 w-full gap-2">
+                        <mat-form-field class="w-full">
+                            <mat-label>Nom</mat-label>
+                            <input [(ngModel)]="data.classroom.name" matInput formControlName="className" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Professeur</mat-label>
+                            <mat-select formControlName="teacher" [compareWith]="compareTeachers" required>
+                                <mat-option *ngFor="let teacher of teachers" [value]="teacher">
+                                    {{ teacher.firstName }} {{ teacher.lastName }} - {{ teacher.subject.name }}
+                                </mat-option>
+                            </mat-select>
+                            <!-- <mat-error *ngIf="gradeControl.hasError('required')">Please choose a grade</mat-error> -->
+                            <mat-hint></mat-hint>
+                        </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Nombre de Sessions par Mois</mat-label>
+                            <input [(ngModel)]="data.classroom.sessionNumber" matInput formControlName="sessionsNumber" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-full">
+                            <mat-label>Prix</mat-label>
+                            <input [(ngModel)]="data.classroom.price" matInput formControlName="price" required>
+                        </mat-form-field>
+                    </div>
+                    
+                <div class="flex justify-between items-center w-full gap-2">
+                    <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Annuler</button>
+                    <button  type="submit"   class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-violet-500 font-bold hover:bg-violet-400 text-white">Modifier</button>
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>

@@ -81,5 +81,15 @@ export class ClassService {
     return this.http.delete(url);
   }
 
+  updateClass(classroom: Classroom): Observable<Classroom> {
+    const url = `${this.apiUrl}/${classroom.id}`;
+    return this.http.put<Classroom>(url, classroom)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to update class information. Please try again later.');
+        })
+      );
+  }
 
 }

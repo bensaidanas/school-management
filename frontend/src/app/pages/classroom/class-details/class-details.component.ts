@@ -97,12 +97,14 @@ export class ClassDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(result);
       if (result) {
-        // this.classService.updateClass(result.student).subscribe(() => {
-        //   this.toast.fire({
-        //     icon: "success",
-        //     title: "Modifier avec succès"
-        //   })
-        // })
+        console.log(result.classroom)
+        this.classService.updateClass(result.classroom).subscribe(() => {
+          this.toast.fire({
+            icon: "success",
+            title: "Modifier avec succès"
+          })
+          this.getClassDetails(this.classroom.id);
+        })
       }
     });
   }
