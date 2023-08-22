@@ -106,5 +106,10 @@ export class TeacherService {
       );
   }
 
+  getClassesTaughtByTeacher(teacherId: number): Observable<Classroom[]> {
+    const url = `${this.apiUrl}/${teacherId}/classes`;
+    return this.http.get<Classroom[]>(url);
+  }
+
   
 }

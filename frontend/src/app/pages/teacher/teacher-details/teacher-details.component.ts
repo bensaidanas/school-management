@@ -37,6 +37,7 @@ export class TeacherDetailsComponent implements OnInit {
       const teacherId = +params.get('id')!;
       this.getTeacherDetails(teacherId);
       this.getPaymentRecords(teacherId);
+      this.fetchClasses(teacherId)
     });
   }
 
@@ -52,9 +53,21 @@ export class TeacherDetailsComponent implements OnInit {
   }
 
   getPaymentRecords(teacherId: number) {
-    this.teacherService.getPaymentsByTeacherId(teacherId).subscribe(
-      payments => {
-        this.payments = payments;
+    // this.teacherService.getPaymentsByTeacherId(teacherId).subscribe(
+    //   payments => {
+    //     this.payments = payments;
+    //   },
+    //   error => {
+    //     console.error(error);
+    //   }
+    // );
+  }
+
+  fetchClasses(teacherId: number) {
+    this.teacherService.getClassesTaughtByTeacher(teacherId).subscribe(
+      classes => {
+        this.classes = classes;
+        console.log(this.classes)
       },
       error => {
         console.error(error);
@@ -68,7 +81,7 @@ export class TeacherDetailsComponent implements OnInit {
       width: '700px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: {classes: this.classes},
+      data: {teacher: this.teacher, classes: this.classes},
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
@@ -96,11 +109,12 @@ export class TeacherDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(result);
       if (result) {
-        this.teacherService.updateTeacher(result.teacher).subscribe(() => {
+        this.teacherService.updateTeacher(result.teacher).subscribe((res) => {
           this.toast.fire({
             icon: "success",
             title: "Modifier avec succès"
           })
+          this.teacher = res
         })
       }
     });

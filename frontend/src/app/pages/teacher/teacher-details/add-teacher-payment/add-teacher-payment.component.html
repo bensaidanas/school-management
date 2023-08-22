@@ -1,1 +1,42 @@
-<p>add-teacher-payment works!</p>
+<div class="flex flex-col justify-between h-full">
+    <div>
+      <h1 mat-dialog-title>Nouveau Paiement</h1>
+      <div mat-dialog-content>
+        <div class="flex flex-col w-full gap-2 my-6">
+          <div *ngFor="let classroom of classes" class="flex justify-between py-1 border-b-2 border-b-violet-200">
+            <div>{{ classroom.name }}</div>
+            <div>{{ classroom.sessionNumber }} Session</div>
+          </div>
+          <div class="flex justify-center gap-4 font-bold text-xl text-red-400">
+            <div>Total:</div>
+            <div>{{ calculateTotal() }} MAD</div>
+          </div>
+        </div>
+        <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
+          <div class="grid grid-cols-2 w-full gap-2">
+            <mat-form-field>
+              <mat-label>Mois</mat-label>
+              <mat-select formControlName="month" required>
+                <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Année</mat-label>
+              <mat-select formControlName="year" required>
+                <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="flex justify-between items-center w-full gap-2">
+            <button (click)="onNoClick()" class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">
+              Annuler
+            </button>
+            <button type="submit" [disabled]="!studentForm.valid" class="w-full outline-none py-3 focus:scale-105 rounded-lg bg-violet-500 font-bold hover:bg-violet-400 text-white">
+              Ajouter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
