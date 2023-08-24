@@ -7,15 +7,15 @@
         <!-- Head -->
         <img class="w-[40%]" src="../../../assets/images/bird.png" />
         <!-- <p class="text-xl font-bold">Login</p> -->
-        <form  class="w-full">
+        <form  class="w-full" (ngSubmit)="onLoginClick()" [formGroup]="loginForm">
             <div class="grid grid-cols-1 w-full gap-1">
                 <mat-form-field class="w-full">
                     <mat-label>Username</mat-label>
-                    <input matInput formControlName="firstName" required>
+                    <input matInput formControlName="username" required>
                 </mat-form-field>
                 <mat-form-field class="w-full">
                     <mat-label>Password</mat-label>
-                    <input matInput formControlName="lastName" required>
+                    <input matInput formControlName="password" required>
                 </mat-form-field>
                 <button  type="submit"   class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-violet-500 font-bold hover:bg-violet-400 text-white">Login</button>
             </div>

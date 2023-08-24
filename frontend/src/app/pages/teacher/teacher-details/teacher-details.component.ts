@@ -11,6 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TeacherEditComponent } from './teacher-edit/teacher-edit.component';
 import Swal from 'sweetalert2';
 import { AddTeacherPaymentComponent } from './add-teacher-payment/add-teacher-payment.component';
+import { TeacherPayment } from 'src/app/models/teacherPayment';
+import { TeacherPaymentService } from 'src/app/services/teacher-payment.service';
 
 @Component({
   selector: 'app-teacher-details',
@@ -21,13 +23,14 @@ export class TeacherDetailsComponent implements OnInit {
   faEdit = faUserPen
   faGithub = faArrowLeft
   teacher!: Teacher;
-  payments!: Payment[];
+  payments!: TeacherPayment[];
   classes!: Classroom[];
-  displayedColumns: string[] = ['Class Name', 'Month', 'Amount', 'Status']
+  displayedColumns: string[] = ['Month', 'Year', 'Amount', 'Status']
 
   constructor(
     private route: ActivatedRoute,
     private teacherService: TeacherService,
+    private paymentService: TeacherPaymentService,
     public dialog: MatDialog,
     private router: Router
   ) {}
@@ -53,14 +56,14 @@ export class TeacherDetailsComponent implements OnInit {
   }
 
   getPaymentRecords(teacherId: number) {
-    // this.teacherService.getPaymentsByTeacherId(teacherId).subscribe(
-    //   payments => {
-    //     this.payments = payments;
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
+    this.paymentService.getPaymentsByTeacher(teacherId).subscribe(
+      payments => {
+        this.payments = payments;
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   fetchClasses(teacherId: number) {
@@ -87,12 +90,18 @@ export class TeacherDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(result);
       if (result) {
-        // delete result.classes;
-        // console.log(result)
-        // this.paymentService.addPaymentForStudent(this.student.id!, result).subscribe(res => {
-        //   console.log("Payment Added")
-        //   this.getPaymentRecords(this.student.id!);
-        // })
+        delete result.classes;
+        console.log(result)
+        this.paymentService.add(result).subscribe(res => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Paiement ajouté avec succès",
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          this.getPaymentRecords(this.teacher.id!);
+        })
       }
     });
   }

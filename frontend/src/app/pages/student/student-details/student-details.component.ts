@@ -82,7 +82,13 @@ export class StudentDetailsComponent implements OnInit {
         delete result.classes;
         console.log(result)
         this.paymentService.addPaymentForStudent(this.student.id!, result).subscribe(res => {
-          console.log("Payment Added")
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Payment Added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          })
           this.getPaymentRecords(this.student.id!);
         })
       }

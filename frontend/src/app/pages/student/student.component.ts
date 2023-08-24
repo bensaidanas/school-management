@@ -8,6 +8,7 @@ import { Grade } from 'src/app/models/grade';
 import { Major } from 'src/app/models/major';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { GradeService } from 'src/app/services/grade.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -78,7 +79,13 @@ export class StudentComponent implements OnInit {
       console.log(result);
       if (result) {
         this.studentService.addStudent(result).subscribe(res => {
-          console.log("Student Added")
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Student Added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          })
           this.getAllStudents();
         })
       }

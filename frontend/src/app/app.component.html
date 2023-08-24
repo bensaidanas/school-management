@@ -1,8 +1,14 @@
-<div class="flex">
-  <app-sidebar></app-sidebar>
+<div class="flex" *ngIf="shouldShowSidebar()">
+  <ng-container >
+    <app-sidebar></app-sidebar>
+  </ng-container>
   <div class="w-full h-full ml-[18vw] pt-8 px-6">
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<ng-container *ngIf="!shouldShowSidebar()">
+  <router-outlet></router-outlet>
+</ng-container>
 
 <!-- <app-login></app-login> -->

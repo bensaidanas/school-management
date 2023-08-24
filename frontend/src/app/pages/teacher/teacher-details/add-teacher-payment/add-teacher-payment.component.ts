@@ -60,9 +60,9 @@ export class AddTeacherPaymentComponent {
   onSaveClick(): void {
     if (this.studentForm.valid) {
       const formValues = this.studentForm.value;
-      this.data.classroomId = formValues.classroomId;
       this.data.month = formValues.month;
       this.data.year = formValues.year;
+      this.data.amount = this.calculateTotal();
       this.dialogRef.close(this.data);
     }
   }
