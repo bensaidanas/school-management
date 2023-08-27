@@ -8,6 +8,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import {MatTreeModule} from '@angular/material/tree'
 
 // import {MatDividerModule} from '@angular/material/divider';
 
@@ -22,7 +23,8 @@ import {MatTableModule} from '@angular/material/table';
         MatSelectModule,
         ReactiveFormsModule,
         MatIconModule,
-        MatTableModule
+        MatTableModule,
+        MatTreeModule
     ]
 })
 

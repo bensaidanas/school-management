@@ -1,4 +1,6 @@
+import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeNestedDataSource } from '@angular/material/tree';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -8,6 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+
+  showParamSubMenu = false;
+
+  toggleParamSubMenu() {
+    this.showParamSubMenu = !this.showParamSubMenu;
+  }
 
   constructor(private router: Router) {}
 

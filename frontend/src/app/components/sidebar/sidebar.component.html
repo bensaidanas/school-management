@@ -5,7 +5,7 @@
     </div>
 
     <!-- Links -->
-    <nav class="flex-grow mt-11">
+    <nav class="flex-grow mt-6">
         <div class="flex flex-col justify-between h-full">
             <ul class="flex flex-col space-y-4 px-3">
                 <li>
@@ -33,10 +33,37 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/parameters" class="px-4 py-2 flex items-center space-x-2 hover:bg-neutral-300 rounded-lg" routerLinkActive="text-white bg-violet-600 hover:bg-violet-600 font-bold">
-                        <i class="pi pi-cog text-lg"></i>
-                        <span>Parametrage</span>
-                    </a>
+                    <div class="px-4 py-2 flex items-center justify-between   rounded-lg" (click)="toggleParamSubMenu()">
+                        <div class="flex gap-2 items-center">
+                            <i class="pi pi-cog text-lg "></i>
+                            <span>Parametrage</span>
+                        </div>
+                        <div class="p-2 rounded-full flex items-center justify-center hover:bg-neutral-300">
+                            <i class="pi pi-chevron-down ml-auto " *ngIf="!showParamSubMenu"></i>
+                            <i class="pi pi-chevron-up ml-auto " *ngIf="showParamSubMenu"></i>
+                        </div>
+                    </div>
+                    <ul class="ml-6 space-y-1"
+                        *ngIf="showParamSubMenu">
+                        <li>
+                            <a routerLink="/subject" class="px-4 py-2 flex items-center space-x-2 hover:bg-neutral-300 rounded-lg" routerLinkActive="text-white bg-violet-600 hover:bg-violet-600 font-bold">
+                                <i class="pi pi-angle-right text-lg"></i>
+                                <span>Matière</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/grade" class="px-4 py-2 flex items-center space-x-2 hover:bg-neutral-300 rounded-lg" routerLinkActive="text-white bg-violet-600 hover:bg-violet-600 font-bold">
+                                <i class="pi pi-angle-right text-lg"></i>
+                                <span>Niveau</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/major" class="px-4 py-2 flex items-center space-x-2 hover:bg-neutral-300 rounded-lg" routerLinkActive="text-white bg-violet-600 hover:bg-violet-600 font-bold">
+                                <i class="pi pi-angle-right text-lg"></i>
+                                <span>Spécialisation</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <div class="px-3 mb-4">
