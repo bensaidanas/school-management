@@ -33,4 +33,37 @@ export class SubjectService {
         })
       );
   }
+
+  // Add a new student
+  add(subject: Partial<Subject>): Observable<Subject> {
+    return this.http.post<Subject>(this.apiUrl, subject)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to add the student. Please try again later.');
+        })
+      );
+  }
+
+  // Update student information
+  update(subject: Subject): Observable<Subject> {
+    const url = `${this.apiUrl}/${subject.id}`;
+    return this.http.put<Subject>(url, subject)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to update student information. Please try again later.');
+        })
+      );
+  }
+
+  delete(subjectId: number) {
+    return this.http.get(`${this.apiUrl}/delete/${subjectId}`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          throw error;
+        })
+      );
+  }
 }

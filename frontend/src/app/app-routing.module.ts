@@ -9,6 +9,7 @@ import { ClassDetailsComponent } from './pages/classroom/class-details/class-det
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ParametersComponent } from './pages/parameters/parameters.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SubjectComponent } from './pages/subject/subject.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'teacher-details/:id', component: TeacherDetailsComponent },
   {path: 'class', component: ClassroomComponent},
   { path: 'class-details/:id', component: ClassDetailsComponent },
+  {path: 'subject', component: SubjectComponent},
 ];
 
 @NgModule({
