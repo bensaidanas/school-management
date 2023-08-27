@@ -38,33 +38,6 @@ export class StudentComponent implements OnInit {
     );
   }
 
-  // populateGrades(students: Student[]) {
-  //   for (const student of students) {
-  //     this.gradeService.getGradeById(student.gradeId).subscribe(
-  //       (grade: Grade) => {
-  //         student.gradeName = grade.name;
-  //       },
-  //       error => {
-  //         console.error(error);
-  //       }
-  //     );
-      
-  //   }
-  // }
-
-  // populateMajors(students: Student[]) {
-  //   for (const student of students) {
-  //     this.studentService.getMajorById(student.majorId).subscribe(
-  //       (major: Major) => {
-  //         student.majorName = major.name;
-  //       },
-  //       error => {
-  //         console.error(error);
-  //       }
-  //     );
-      
-  //   }
-  // }
 
   openAddStudentModal(enterAnimationDuration: string, exitAnimationDuration: string) : void {
     const dialogRef = this.dialog.open(AddStudentModalComponent, {
@@ -82,7 +55,7 @@ export class StudentComponent implements OnInit {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Student Added successfully",
+            title: "Étudiant ajouté avec succès",
             showConfirmButton: false,
             timer: 1500,
           })

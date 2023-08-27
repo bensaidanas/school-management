@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faUserTie, faLandmark, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  faProf = faUserTie
+  faClass = faLandmark
+  faStudent = faUserGraduate
 
 }

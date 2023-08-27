@@ -123,7 +123,7 @@ export class ClassDetailsComponent implements OnInit {
 
   delete(classroom: Classroom): void {
     Swal.fire({
-      title: `Are you sure you want to delete this class ${classroom.name}?`,
+      title: `Êtes-vous sûr(e) de vouloir supprimer ce cours ${classroom.name}?`,
       icon: "question",
       showCancelButton: true,
       // showCloseButton: true,
@@ -146,7 +146,7 @@ export class ClassDetailsComponent implements OnInit {
 
   unrollStudent(student: Student) {
     Swal.fire({
-      title: `Are you sure you want to unroll this student ${student.firstName} ${student.lastName}?`,
+      title: `Êtes-vous sûr(e) de vouloir désinscrire cet étudiant ${student.firstName} ${student.lastName}?`,
       icon: "question",
       showCancelButton: true,
       // showCloseButton: true,

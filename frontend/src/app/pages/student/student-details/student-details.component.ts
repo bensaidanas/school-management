@@ -85,7 +85,7 @@ export class StudentDetailsComponent implements OnInit {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Payment Added successfully",
+            title: "Paiement ajouté avec succès",
             showConfirmButton: false,
             timer: 1500,
           })
@@ -131,7 +131,7 @@ export class StudentDetailsComponent implements OnInit {
 
   delete(student: Student): void {
     Swal.fire({
-      title: `Are you sure you want to delete ${student.firstName} ${student.lastName}?`,
+      title: `Êtes-vous sûr(e) de vouloir supprimer ${student.firstName} ${student.lastName}?`,
       icon: "question",
       showCancelButton: true,
       // showCloseButton: true,
