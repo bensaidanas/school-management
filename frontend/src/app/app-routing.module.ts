@@ -10,6 +10,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ParametersComponent } from './pages/parameters/parameters.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SubjectComponent } from './pages/subject/subject.component';
+import { GradeComponent } from './pages/grade/grade.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'class', component: ClassroomComponent},
   { path: 'class-details/:id', component: ClassDetailsComponent },
   {path: 'subject', component: SubjectComponent},
+  {path: 'grade', component: GradeComponent},
 ];
 
 @NgModule({

@@ -32,6 +32,10 @@ import { ClassEditComponent } from './pages/classroom/class-details/class-edit/c
 import { SubjectComponent } from './pages/subject/subject.component';
 import { AddSubjectComponent } from './pages/subject/add-subject/add-subject.component';
 import { EditSubjectComponent } from './pages/subject/edit-subject/edit-subject.component';
+import { GradeComponent } from './pages/grade/grade.component';
+import { AddGradeComponent } from './pages/grade/add-grade/add-grade.component';
+import { EditGradeComponent } from './pages/grade/edit-grade/edit-grade.component';
+import { MajorComponent } from './pages/major/major.component';
 
 
 @NgModule({
@@ -58,7 +62,11 @@ import { EditSubjectComponent } from './pages/subject/edit-subject/edit-subject.
     ClassEditComponent,
     SubjectComponent,
     AddSubjectComponent,
-    EditSubjectComponent
+    EditSubjectComponent,
+    GradeComponent,
+    AddGradeComponent,
+    EditGradeComponent,
+    MajorComponent
   ],
   imports: [
     BrowserModule,
