@@ -36,6 +36,8 @@ import { GradeComponent } from './pages/grade/grade.component';
 import { AddGradeComponent } from './pages/grade/add-grade/add-grade.component';
 import { EditGradeComponent } from './pages/grade/edit-grade/edit-grade.component';
 import { MajorComponent } from './pages/major/major.component';
+import { AddMajorComponent } from './pages/major/add-major/add-major.component';
+import { EditMajorComponent } from './pages/major/edit-major/edit-major.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { MajorComponent } from './pages/major/major.component';
     GradeComponent,
     AddGradeComponent,
     EditGradeComponent,
-    MajorComponent
+    MajorComponent,
+    AddMajorComponent,
+    EditMajorComponent
   ],
   imports: [
     BrowserModule,

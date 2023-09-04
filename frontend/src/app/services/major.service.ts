@@ -33,4 +33,36 @@ export class MajorService {
         })
       );
   }
+
+  delete(subjectId: number) {
+    return this.http.get(`${this.apiUrl}/delete/${subjectId}`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          throw error;
+        })
+      );
+  }
+
+  add(subject: Partial<Major>): Observable<Major> {
+    return this.http.post<Major>(this.apiUrl, subject)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to add the student. Please try again later.');
+        })
+      );
+  }
+
+  // Update student information
+  update(subject: Major): Observable<Major> {
+    const url = `${this.apiUrl}/${subject.id}`;
+    return this.http.put<Major>(url, subject)
+      .pipe(
+        catchError((error: any) => {
+          console.error('An error occurred:', error);
+          return throwError('Failed to update student information. Please try again later.');
+        })
+      );
+  }
 }
