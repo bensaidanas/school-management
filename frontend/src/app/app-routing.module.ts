@@ -11,6 +11,7 @@ import { ParametersComponent } from './pages/parameters/parameters.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SubjectComponent } from './pages/subject/subject.component';
 import { GradeComponent } from './pages/grade/grade.component';
+import { MajorComponent } from './pages/major/major.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'class-details/:id', component: ClassDetailsComponent },
   {path: 'subject', component: SubjectComponent},
   {path: 'grade', component: GradeComponent},
+  {path: 'major', component: MajorComponent},
 ];
 
 @NgModule({

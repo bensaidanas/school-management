@@ -1,1 +1,21 @@
-<p>add-major works!</p>
+
+<div class="flex flex-col  justify-between h-full">
+    <div>
+        <h1 mat-dialog-title>Nouvelle fillier</h1>
+        <div mat-dialog-content>
+            <!-- <p></p> -->
+            <form (ngSubmit)="onSaveClick()" [formGroup]="studentForm" class="w-full">
+                <mat-form-field class="w-full">
+                    <mat-label>Libelle</mat-label>
+                    <input matInput formControlName="libel" required>
+                </mat-form-field>
+                
+                <div class="flex justify-between items-center w-full gap-2">
+                    <button  (click)="onNoClick()"  class="w-full py-3 rounded-lg focus:outline-none focus:bg-black hover:bg-black text-white font-semibold">Annuler</button>
+                    <button  type="submit"   class="invalid:cursor-not-allowed w-full outline-none py-3 focus:scale-105 rounded-lg bg-violet-500 font-bold hover:bg-violet-400 text-white">Ajouter</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

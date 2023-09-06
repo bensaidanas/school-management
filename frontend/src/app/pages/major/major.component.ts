@@ -78,7 +78,7 @@ export class MajorComponent {
 
   openDelete(subject: Major): void {
     Swal.fire({
-      title: `Êtes-vous sûr(e) de vouloir supprimer ce niveau "${subject.name}" ?`,
+      title: `Êtes-vous sûr(e) de vouloir supprimer cette filier "${subject.name}" ?`,
       icon: "question",
       showCancelButton: true,
       // showCloseButton: true,
